@@ -4,7 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  
 public class RoomVO { 
 	 
-	private String ro_pid; 
+	private int ro_pid;
+	private int prod_pid;
 	private String ro_num;
 	private String ro_name;
 	private String ro_explanation;
@@ -22,10 +23,10 @@ public class RoomVO {
 	private String ro_t_out_time;
 	private String ro_t_price;
 	
-	public String getRo_pid() {
+	public int getRo_pid() {
 		return ro_pid;
 	}
-	public void setRo_pid(String ro_pid) {
+	public void setRo_pid(int ro_pid) {
 		this.ro_pid = ro_pid;
 	}
 	public String getRo_num() {
@@ -108,5 +109,11 @@ public class RoomVO {
 				+ ", ro_select_s_or_t=" + ro_select_s_or_t + ", ro_s_in_time=" + ro_s_in_time + ", ro_s_out_time="
 				+ ro_s_out_time + ", ro_s_price=" + ro_s_price + ", ro_t_in_time=" + ro_t_in_time + ", ro_t_out_time="
 				+ ro_t_out_time + ", ro_t_price=" + ro_t_price + "]";
+	}
+	public int getProd_pid() {
+		return prod_pid;
+	}
+	public void setProd_pid(int prod_pid) {
+		this.prod_pid = prod_pid;
 	}
 } 
