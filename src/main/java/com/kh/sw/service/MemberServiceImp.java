@@ -11,6 +11,7 @@ import com.kh.sw.vo.MemberVO;
 
 @Service
 public class MemberServiceImp implements MemberService{
+	@Autowired
 	MemberDAO memberDao;
 	
 	//회원 전체 불러오기
@@ -88,7 +89,7 @@ public class MemberServiceImp implements MemberService{
 	//아이디 중복체크
 	@Override
 	public int idCheck(String me_id) {
-		
+	
 		int result = memberDao.idCheck(me_id);
 		return result;
 	}

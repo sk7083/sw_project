@@ -27,5 +27,5 @@ public interface MemberDAO {
 	public int MemberDelete(String me_id);
 	
 	//�븘�씠�뵒 以묐났泥댄겕
-	public int idCheck(String me_id);
+	public Integer idCheck(String me_id);
 }

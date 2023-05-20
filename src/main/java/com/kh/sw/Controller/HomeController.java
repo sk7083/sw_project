@@ -47,7 +47,7 @@ public class HomeController {
 		return mv;
 	}	
 
-//	//È¸¿ø Á¤º¸ ÀüÃ¼ ºÒ·¯¿À±â
+//	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/information", method = RequestMethod.GET)
 	public ModelAndView information(ModelAndView mv, MemberVO member, HttpServletRequest request) throws Exception{
 		List<MemberVO> list = memberService.memberLoad(member);
@@ -59,51 +59,51 @@ public class HomeController {
 		return mv;
 	}
 	
-	//È¸¿ø »ó¼¼ ÆäÀÌÁö
+	//È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/Detail", method = RequestMethod.GET)
 	public ModelAndView boardDetail(ModelAndView mv, HttpSession session, MemberVO member, @RequestParam("me_id") String me_id) throws Exception{
 		MemberVO Detail = memberService.memberDetail(me_id);
 		mv.addObject("Detail", Detail);
-		System.out.println("memberDetail °ª : "+Detail);
+		System.out.println("memberDetail ï¿½ï¿½ : "+Detail);
 		mv.setViewName("member/Detail");
 		return mv;
 	}
 
-	//È¸¿ø°¡ÀÔ (GET)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (GET)
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView registerMember(ModelAndView mv) throws Exception{
 		mv.setViewName("member/register");
 		return mv;
 	}
 	
-	//È¸¿ø°¡ÀÔ (POST)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (POST)
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerMemberPost(ModelAndView mv, MemberVO member) throws Exception{
 		boolean memberSignup = memberService.registerMember(member);
 		if(memberSignup) {
 			System.out.println("============================================");
-			System.out.println("È¸¿ø°¡ÀÔ ¼º°ø");
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("============================================");
 			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("============================================");
-			System.out.println("È¸¿ø°¡ÀÔ ½ÇÆÐ");
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("============================================");
 			mv.setViewName("redirect:/register");
 		}
 		return mv;
 	}
 	
-	//·Î±×ÀÎ (POST)
+	//ï¿½Î±ï¿½ï¿½ï¿½ (POST)
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView memberLoginPost(ModelAndView mv, HttpSession session, MemberVO member) throws Exception{
 		MemberVO user = memberService.memberLogin(member);
 		if(user != null && user.getMe_pw().equals(member.getMe_pw())) {
-			//·Î±×ÀÎÇÒ °æ¿ì ±ÇÇÑÀÌ 1·Î ¿À¸§ => ±ÇÇÑÀÌ 1 ÀÌ»óÀÏ °æ¿ì È¸¿ø Àü¿ë ÀÐ±â ¾²±â °¡´É
-			//·Î±×¾Æ¿ôÇÒ °æ¿ì ±ÇÇÑ 0À¸·Î ³»¸± °Í
+			//ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//ï¿½Î±×¾Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			
-			//·Î±×ÀÎÀÌ ¾ÈµÈ À¯Àú´Â ±ÇÇÑÀÌ 0ÀÌÁö¸¸ ·Î±×ÀÎÇÒ °æ¿ì 1·Î »ó½Â½ÃÅ´.
-			//°ü¸®ÀÚÀÇ °æ¿ì Ç×½Ã 2 »óÅÂ
+			//ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½Â½ï¿½Å´.
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½×½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½
 			if(user.getMe_auth() == 0) {
 				user.setMe_auth(1);
 			} else if(user.getMe_auth() == 2) {
@@ -111,13 +111,13 @@ public class HomeController {
 			}
 			
 			mv.addObject("user", user);
-			System.out.println("¼º°ø");
-			System.out.println("user°ª : "+user);
-			//¼¼¼Ç¿¡ °ª ÀúÀå
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("userï¿½ï¿½ : "+user);
+			//ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			session.setAttribute("user", user);
 			mv.setViewName("redirect:/");
 		} else {
-			System.out.println("½ÇÆÐ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 
 			mv.setViewName("redirect:/");
 		}
@@ -125,7 +125,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	//¸¶ÀÌÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public ModelAndView myPage(ModelAndView mv, MemberVO member, HttpSession session) throws Exception{
 		List<MemberVO> list = memberService.memberLoad(member);
@@ -137,65 +137,65 @@ public class HomeController {
 		return mv;
 	}
 	
-	//·Î±×¾Æ¿ô ±â´É
+	//ï¿½Î±×¾Æ¿ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logout(ModelAndView mv, HttpSession session) throws Exception{
-		//¼¼¼Ç Á¤º¸¸¦ ÀüÃ¼¸¦ ³¯¸°´Ù.
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		session.invalidate();
 		mv.setViewName("redirect:/");
 		return mv;
 	}
 	
-	//È¸¿øÁ¤º¸ ¼öÁ¤ (GET)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (GET)
 	@RequestMapping(value = "/Update", method = RequestMethod.GET)
 	public ModelAndView memberUpdate(ModelAndView mv, HttpSession session, MemberVO member, 
 			@RequestParam("me_id") String me_id) throws Exception{
 		MemberVO Detail = memberService.memberDetail(me_id);
-		System.out.println("update¿¡¼­ÀÇ detail °ª : "+Detail);
-		System.out.println("me_id°ª Ãâ·Â : "+me_id);
+		System.out.println("updateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ detail ï¿½ï¿½ : "+Detail);
+		System.out.println("me_idï¿½ï¿½ ï¿½ï¿½ï¿½ : "+me_id);
 		mv.addObject("Detail", Detail);
 		session.setAttribute("Detail", Detail);
 		mv.setViewName("member/Update");
 		return mv;
 	}
 	
-	//È¸¿øÁ¤º¸ ¼öÁ¤ (POST)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (POST)
 	@RequestMapping(value = "/Update", method = RequestMethod.POST)
 	public ModelAndView memberUpdatePOST(ModelAndView mv, MemberVO member, 
 			@RequestParam("me_id") String me_id) throws Exception{		
 		MemberVO detail = memberService.memberDetail(me_id);
 		System.out.println("=======================================");
 		int res = memberService.memberUpdate(member);
-		System.out.println("res°ª È®ÀÎ : "+res);
+		System.out.println("resï¿½ï¿½ È®ï¿½ï¿½ : "+res);
 		if(res != 0) {
-			System.out.println("È¸¿øÁ¤º¸ ¼öÁ¤ ¿Ï·á");
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
 			mv.setViewName("redirect:/Detail?me_id="+me_id);
 		} else {
-			System.out.println("È¸¿øÁ¤º¸ ¼öÁ¤ ½ÇÆÐ");
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			mv.setViewName("redirect:/");
 		}
 		return mv;
 	}
 	
-	//È¸¿ø »èÁ¦
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/Delete/{me_id}", method = RequestMethod.GET)
 	public ModelAndView boardDelete(ModelAndView mv, @PathVariable("me_id")String me_id, MemberVO member) throws Exception{
 		MemberVO user = memberService.memberLogin(member);
 		int res = memberService.memberDelete(me_id);
 		if(res != 0) {
-			System.out.println("È¸¿ø »èÁ¦ ¿Ï·á");
+			System.out.println("È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
 			mv.addObject("user", user);
 			mv.setViewName("redirect:/logout");
 		} else {
-			System.out.println("È¸¿ø »èÁ¦ ½ÇÆÐ");
+			System.out.println("È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			mv.setViewName("redirect:/");
 		}
 		return mv;
 	}
 	
-//	================================[È­¸é ±¸Çö]================================
+//	================================[È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½]================================
 	
-	//¸ÞÀÎÈ­¸é (about)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (about)
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public ModelAndView aboutMain(ModelAndView mv) throws Exception{
 		
@@ -203,7 +203,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	//¸ÞÀÎÈ­¸é (blog)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (blog)
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public ModelAndView blogMain(ModelAndView mv) throws Exception{
 		
@@ -211,7 +211,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	//¸ÞÀÎÈ­¸é (blog-single)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (blog-single)
 	@RequestMapping(value = "/blogSingle", method = RequestMethod.GET)
 	public ModelAndView blogSingleMain(ModelAndView mv) throws Exception{
 		
@@ -219,7 +219,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	//¸ÞÀÎÈ­¸é (contact)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (contact)
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public ModelAndView contactMain(ModelAndView mv) throws Exception{
 		
@@ -227,7 +227,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	//¸ÞÀÎÈ­¸é (gallery)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (gallery)
 	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
 	public ModelAndView galleryMain(ModelAndView mv) throws Exception{
 		
@@ -237,17 +237,15 @@ public class HomeController {
 	
 //	========================================================================================
 	
-	//ID Áßº¹Ã¼Å©
+	//ID ï¿½ßºï¿½Ã¼Å©
 	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public int idCheck(@RequestParam("meId") String me_id) {
-		
+	public String idCheck(@RequestParam("meId") String me_id) {
 		int result = memberService.idCheck(me_id);
-
-		return result;
+		return String.valueOf(result);
 	}
 	
-	//¸ÞÀÎÈ­¸é (properties)
+	//ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ (properties)
 	@RequestMapping(value = "/properties", method = RequestMethod.GET)
 	public ModelAndView propertiesMain(ModelAndView mv) throws Exception{
 		
@@ -256,7 +254,7 @@ public class HomeController {
 	}
 	
 	
-	//È¸¿ø°ü¸® [°ü¸®ÀÚ Àü¿ë]
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½]
 	@RequestMapping(value = "/memberManager", method = RequestMethod.GET)
 	public ModelAndView memberManager(ModelAndView mv, MemberVO member, HttpServletRequest request) throws Exception{
 		List<MemberVO> list = memberService.memberLoad(member);
