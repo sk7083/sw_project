@@ -2,6 +2,7 @@ package com.kh.sw.dao;
 
 import java.util.List;
 
+import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
 
 
@@ -23,5 +24,5 @@ public interface ProductDAO {
 	public int ProductDelete(int pr_pid);
 	
 	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
-	public List<ProductVO> CategoryList();
+	public List<CategoryVO> CategoryList();
 }

@@ -44,8 +44,8 @@
   	</delete>
   	
 	<!-- 카테고리 리스트 -->
-	<select id="CategoryList" resultType="com.kh.sw.vo.ProductVO">
-		select ca_pid from category
+	<select id="CategoryList" resultType="com.kh.sw.vo.CategoryVO">
+		select ca_pid,ca_name from category
   	</select>
   	
 </mapper>
