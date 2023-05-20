@@ -1,5 +1,6 @@
 package com.kh.sw.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,14 @@ public class ProductServiceImp implements ProductService{
 	//�긽�뭹 �쟾泥� 由ъ뒪�듃
 	@Override
 	public List<ProductVO> productList(ProductVO board){
-		return productDao.ProductList();
+		List<ProductVO> list = new ArrayList<ProductVO>();
+		try {
+			list =  productDao.ProductList();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	//�긽�뭹 �깮�꽦(異붽�)

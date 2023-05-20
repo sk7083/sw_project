@@ -1,6 +1,7 @@
 package com.kh.sw.Controller;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
 @Controller
 public class ProductController {
+	@Autowired
 	ProductService productService;
 	RoomService roomService;
 
@@ -78,10 +80,7 @@ public class ProductController {
 	//�긽�뭹 �쁽�솴
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
 	public ModelAndView prductList(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
-
 		List<ProductVO> list = productService.productList(product);
-		for(ProductVO bor : list) {
-		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		mv.addObject("user", user);
 		mv.addObject("list", list);
@@ -149,15 +148,10 @@ public class ProductController {
 	//�긽�뭹 �쁽�솴 [紐⑦뀛]
 	@RequestMapping(value = "/motel", method = RequestMethod.GET)
 	public ModelAndView prductListMotel(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
-
-	        
 		List<ProductVO> proList = productService.productList(product);
-		for(ProductVO bor : proList) {
-		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		mv.addObject("user", user);
 		mv.addObject("proList", proList);
-		System.out.println("proList �젙蹂� : "+proList);
 		mv.setViewName("product/motel");
 		return mv;
 	}
