@@ -2,6 +2,7 @@ package com.kh.sw.service;
 
 import java.util.List;
 
+import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
 
 public interface ProductService {
@@ -22,5 +23,5 @@ public interface ProductService {
 	public int productDelete(int pr_pid);
 	
 	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
-	public List<ProductVO> CategoryList(ProductVO product);
+	public List<CategoryVO> CategoryList();
 }

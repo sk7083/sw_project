@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.sw.dao.ProductDAO;
+import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
 
 @Service
 public class ProductServiceImp implements ProductService{
+	@Autowired
 	ProductDAO productDao;
 	
 	//�긽�뭹 �쟾泥� 由ъ뒪�듃
@@ -66,7 +68,7 @@ public class ProductServiceImp implements ProductService{
 	
 	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
 	@Override
-	public List<ProductVO> CategoryList(ProductVO board){
+	public List<CategoryVO> CategoryList(){
 		return productDao.CategoryList();
 	}
 }

@@ -223,9 +223,7 @@
 					 <select id="lstFavorites">
 					 <option>상품을 선택해주세요.</option>
 					<c:forEach items="${list}" var="v">
-		  				<c:if test="${v.ca_pid == '모텔' || v.ca_pid == '호텔' || v.ca_pid == '게스트 하우스'}">
-						    <option>${v.ca_pid}</option>
-		  				</c:if>
+		  				<option>${v.ca_name}</option>
 					</c:forEach>
 					</select>
 				</div>

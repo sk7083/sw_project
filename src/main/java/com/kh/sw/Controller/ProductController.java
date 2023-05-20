@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.sw.service.ProductService;
 import com.kh.sw.service.RoomService;
+import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.MemberVO;
 import com.kh.sw.vo.ProductVO;
 import com.kh.sw.vo.RoomVO;
@@ -48,12 +49,20 @@ public class ProductController {
 	//�긽�뭹 �깮�꽦(異붽�) (GET)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
 	public ModelAndView ProductInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, ProductVO product) throws Exception{
-		//���옣�맂 移댄뀒怨좊━ 蹂댁뿬二쇨린 �쐞�븿
-		List<ProductVO> list = productService.CategoryList(product);
+		List<CategoryVO> categoryList = productService.CategoryList();
+		List<CategoryVO> productCate = new ArrayList<CategoryVO>();
+		if(categoryList != null && categoryList.size()>0) {
+			for(int i=0; i<categoryList.size(); i++) {
+				CategoryVO categoryVO = categoryList.get(i);
+				String sPid = categoryVO.getCa_pid();
+				if(sPid.contains("CA")) {
+					productCate.add(categoryVO);
+				}
+			}
+		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		mv.addObject("list",list);
+		mv.addObject("list",productCate);
 		mv.addObject("user", user);
-		System.out.println("蹂대궦 user �젙蹂� : " + user);
 		mv.setViewName("product/productInsert");
 		return mv;
 	}
@@ -148,10 +157,8 @@ public class ProductController {
 	//�긽�뭹 �쁽�솴 [紐⑦뀛]
 	@RequestMapping(value = "/motel", method = RequestMethod.GET)
 	public ModelAndView prductListMotel(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
-		List<ProductVO> proList = productService.productList(product);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		mv.addObject("user", user);
-		mv.addObject("proList", proList);
 		mv.setViewName("product/motel");
 		return mv;
 	}
