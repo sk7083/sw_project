@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
+import com.kh.sw.vo.RoomVO;
 
 
 public interface ProductDAO {
@@ -25,4 +26,11 @@ public interface ProductDAO {
 	
 	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
 	public List<CategoryVO> CategoryList();
+	
+	public String getCateName(String id);
+	
+	public List<ProductVO> productInfoList();
+	
+	//Room insert.
+	public int insertRoom(RoomVO room);
 }

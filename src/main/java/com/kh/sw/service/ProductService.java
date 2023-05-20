@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
+import com.kh.sw.vo.RoomVO;
 
 public interface ProductService {
 
@@ -24,4 +25,8 @@ public interface ProductService {
 	
 	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
 	public List<CategoryVO> CategoryList();
+	
+	public List<ProductVO> productInfoList();
+	
+	public int insertRooom(RoomVO room);
 }

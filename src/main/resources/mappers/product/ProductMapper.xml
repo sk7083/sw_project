@@ -6,19 +6,27 @@
 
 	<!-- 게시판 리스트 -->
 	<select id="ProductList" resultType="com.kh.sw.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3 from product
+		select P.pr_pid, P.pr_ca_pid, C.ca_name,P.pr_name, P.pr_content, P.pr_address1, P.pr_address2, P.pr_address3 from product P,category C
+		where P.pr_ca_pid = C.ca_pid
+  	</select>
+  	
+  	<select id="productInfoList" resultType="com.kh.sw.vo.ProductVO">
+  		select P.pr_pid, P.pr_ca_pid, C.ca_name,P.pr_name, P.pr_content, P.pr_address1, P.pr_address2, P.pr_address3 from product P,category C
+		where P.pr_ca_pid = C.ca_pid
   	</select>
   	
 	<!-- 상품 생성(추가) -->
 	 <insert id="ProductInsert">
-	 	insert into product (pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3)
-	 	 values(#{pr_pid}, #{pr_ca_pid}, #{pr_name}, #{pr_content}, #{pr_address1}, #{pr_address2}, #{pr_address3})
+	 	insert into product (pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3)
+	 	 values(#{pr_ca_pid}, #{pr_name}, #{pr_content}, #{pr_address1}, #{pr_address2}, #{pr_address3})
 	 </insert>
 
 	<!-- 상품 상세 페이지 -->
-	<select id="ProductSelect" resultType="com.kh.sw.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3 from product
-			where pr_pid = #{pr_pid}
+	<select id="ProductSelect" resultType="com.kh.sw.vo.ProductVO" parameterType="int">
+		select P.pr_pid, P.pr_ca_pid, C.ca_name,P.pr_name, P.pr_content, P.pr_address1, P.pr_address2, P.pr_address3 
+		from product P,category C
+		where P.pr_ca_pid = C.ca_pid
+		and P.pr_pid = #{pr_pid}
 	</select>
 	
 	
@@ -27,12 +35,11 @@
 	<update id="ProductUpdate">
 		 update product
 		 		set
-		 			pr_ca_pid = #{pr_ca_pid},
 		 			pr_name = #{pr_name},
 		 			pr_content = #{pr_content},
-		 			pr_address = #{pr_address1},
-		 			pr_address = #{pr_address2},
-		 			pr_address = #{pr_address3}
+		 			pr_address1 = #{pr_address1},
+		 			pr_address2 = #{pr_address2},
+		 			pr_address3 = #{pr_address3}
 		 		where
 		 			pr_pid = #{pr_pid}
 	</update>
@@ -47,5 +54,10 @@
 	<select id="CategoryList" resultType="com.kh.sw.vo.CategoryVO">
 		select ca_pid,ca_name from category
   	</select>
+  	
+  	<insert id="insertRoom" parameterType="com.kh.sw.vo.RoomVO">
+  		insert into room (prod_pid, ro_num, ro_max_people, ro_min_people, ro_s_in_time, ro_s_out_time,ro_s_price,ro_t_in_time,ro_t_out_time,ro_t_price,ro_name,ro_explanation,ro_select_s_or_t)
+	 	 values(#{prod_pid}, #{ro_num}, #{ro_max_people}, #{ro_min_people}, #{ro_s_in_time}, #{ro_s_out_time},#{ro_s_price},#{ro_t_in_time},#{ro_t_out_time},#{ro_t_price},#{ro_name},#{ro_explanation},#{ro_select_s_or_t})
+  	</insert>
   	
 </mapper>

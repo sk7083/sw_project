@@ -249,63 +249,38 @@
 	</div>
 	<!-- ===================================== 시작 지점 [Start] ===================================== -->
 	<div style="border-top: 2px solid #ced4da; margin-bottom: 50px"></div>
-	<form action="<c:url value="/productInsert"></c:url>" method="post"
-		enctype="multipart/form-data">
-		<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
-			<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품 등록</p>
+	<!-- ===================================== 시작 지점 [Start] ===================================== -->
+		<div style="margin-left: 15%; margin-right: 15%; margin-top: 100px">
+			<p
+				style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">
+				상품 리스트</p>
+			<table class="table table-hover">
+				<thead style="text-align: center">
+					<tr>
+						<th>상품 종류</th>
+						<th>상품 명</th>
+						<th>상품 설명</th>
+						<th>주소</th>
+					</tr>
+				</thead>
 
-			<div class="container">
-				<div class="form-group">
-					<label for="pr_name">상품 선택</label> <select id="lstFavorites">
-						<option>상품을 선택해주세요.</option>
-						<c:forEach items="${list}" var="v">
-							<option>${v.ca_name}</option>
-						</c:forEach>
-					</select>
-				</div>
-				<input type="text" id="txtFavorite" name="pr_ca_pid"
-					style="display: none;" />
-
-				<div class="form-group" style="margin-top: 60px">
-					<label for="pr_name">상품명</label> <input type="text"
-						class="form-control" id="pr_name" name="pr_name" placeholder="상품명"
-						required maxlength=20>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label" for="pr_content">상품 설명</label> <input
-						class="form-control" type="text" name="pr_content"
-						placeholder="상품 설명" maxlength="16">
-				</div>
-
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userPhone">주소</label><br> <input
-						type="text" id="sample6_postcode" placeholder="우편번호"
-						name="pr_address1"
-						style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="button" onclick="sample6_execDaumPostcode()"
-						value="우편번호 찾기"
-						style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-					<input type="text" id="sample6_address" placeholder="주소"
-						name="pr_address2"
-						style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="text" id="sample6_detailAddress" placeholder="상세주소"
-						name="pr_address3"
-						style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목"
-						style="display: none">
-				</div>
+				<c:forEach items="${list}" var="b">
+					<tbody style="text-align: center;">
+						<tr>
+							<td>${b.ca_name}</td>
+							<td><a href="/sw/productInfo?pid=${b.pr_pid}#tel123">${b.pr_name }</a></td>
+							<td>${b.pr_content }</td>
+							<td>${b.displayAdress }</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
+			<div style="text-align: right">
+				<button class="btn btn-primary" onclick="location.href='/sw/productInsert'">상품 등록</button>
 			</div>
 		</div>
-
-		<div class="form-group has-feedback">
-			<button type="submit" class="btn btn-light" style="margin-top: 20px"
-				id="signup">상품 등록</button>
-			<button class="btn btn-light" type="reset"
-				style="margin-top: 20px; margin-left: 20px">취소</button>
-		</div>
-		</div>
-	</form>
+		<p style="margin-bottom: 150px"></p>
+		<!-- ======================================= 끝 지점 [End] ======================================= -->
 	<!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
 
@@ -446,6 +421,8 @@
 		</div>
 	</div>
 </form>
+
+
 <!-- ================ End Login Modal ================= -->
 
 

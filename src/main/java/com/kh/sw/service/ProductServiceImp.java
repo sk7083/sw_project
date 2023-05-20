@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.sw.dao.ProductDAO;
 import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
+import com.kh.sw.vo.RoomVO;
 
 @Service
 public class ProductServiceImp implements ProductService{
@@ -41,18 +42,12 @@ public class ProductServiceImp implements ProductService{
 	//�긽�뭹 �닔�젙
 	@Override
 	public int productUpdate(ProductVO product){
-		if(product == null || productDao.ProductList().size() == 0) {
-			return 0;
-		}
 		return productDao.ProductUpdate(product);
 	}
 	
 	//�긽�뭹 �긽�꽭 �럹�씠吏�
 	@Override
 	public ProductVO productDetail(int pr_pid){
-		if(pr_pid == 0) {
-			return null;
-		}
 		return productDao.ProductSelect(pr_pid);
 	}
 	
@@ -71,4 +66,17 @@ public class ProductServiceImp implements ProductService{
 	public List<CategoryVO> CategoryList(){
 		return productDao.CategoryList();
 	}
+
+	@Override
+	public List<ProductVO> productInfoList() {
+		// TODO Auto-generated method stub
+		return productDao.productInfoList();
+	}
+
+	@Override
+	public int insertRooom(RoomVO room) {
+		// TODO Auto-generated method stub
+		return productDao.insertRoom(room);
+	}
+	
 }

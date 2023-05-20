@@ -213,8 +213,9 @@
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
    	<div style=" border-top: 2px solid #ced4da; margin-bottom: 50px"></div>
-    <form action="<c:url value="/roomInsert"></c:url>" method="post" enctype="multipart/form-data">
-			
+    <form action="<c:url value="/roomInsertProcess"></c:url>" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="pr_pid" value="${pr_pid }">
+			<input type="hidden" name="ro_select_s_or_t" id="type" value="ST"/>
 			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
 		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
 			  			
@@ -461,6 +462,8 @@ function btnActive()  {
 	//대실 전용
 	  const noneUse = document.getElementById('noneUse');
 	  const Use = document.getElementById('Use');
+	  
+	  const type = document.getElementById('type');
 //================= [대실 사용 금지] =================		  
 	  // noneUse 숨기기 (display: none)
 	  if(noneUse.style.display !== 'none' && timebox2.style.display !== 'none') {
@@ -469,6 +472,9 @@ function btnActive()  {
 		 //input 비활성
 		 stop.disabled = true;
 		 timebox.style.display = 'none';
+		 if(type.value == 'ST'){
+			 type.value ='S';
+		 }
 	  } else if(timebox2.style.display == 'none'){
 		  alert('둘 중 하나를 선택해주세요.')
 	  
@@ -479,6 +485,9 @@ function btnActive()  {
 	  //input 활성
 	    stop.disabled = false;
 	    timebox.style.display = 'flex';
+		 if(type.value == 'S'){
+			 type.value='ST';
+		 }
 	  }
 	}
 	
@@ -494,7 +503,7 @@ function btnActive2()  {
   	//숙박 전용
 	  const noneUse2 = document.getElementById('noneUse2');
 	  const Use2 = document.getElementById('Use2');
-
+	  const type = document.getElementById('type');
 //================= [숙박 사용 금지] =================	  
 	// noneUse 숨기기 (display: none)
 	  if(noneUse2.style.display !== 'none' && timebox3.style.display !== 'none') {
@@ -503,6 +512,9 @@ function btnActive2()  {
 		 //input 비활성
 		 stop2.disabled = true;
 		 timebox2.style.display = 'none';
+		 if(type.value == 'ST'){
+			 type.value = 'T';
+		 }
 		 
 	  } else if(timebox3.style.display == 'none'){
 		  alert('둘 중 하나를 선택해주세요.')
@@ -514,6 +526,9 @@ function btnActive2()  {
 	  //input 활성
 	    stop2.disabled = false;
 	    timebox2.style.display = 'flex';
+		 if(type.value == 'T'){
+			 type.value ='ST';
+		 }
 	  }
 	  
 	}
