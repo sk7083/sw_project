@@ -214,132 +214,42 @@
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
    	<div style=" border-top: 2px solid #ced4da; margin-bottom: 50px"></div>
     <form action="<c:url value="/productInsert"></c:url>" method="post" enctype="multipart/form-data">
-		<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
-		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품 등록</p>
-		
-			<div class="container">
-	  			<div class="form-group">
-					<label for="pr_name">상품 선택</label>
-					 <select id="lstFavorites">
-					 <option>상품을 선택해주세요.</option>
-					<c:forEach items="${list}" var="v">
-		  				<option>${v.ca_name}</option>
-					</c:forEach>
-					</select>
-				</div>
-					<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none;"/>
-	 
-				<div class="form-group" style="margin-top: 60px">
-					<label for="pr_name">상품명</label>
-						<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20>
-				</div>
-			    
-		   		<div class="form-group">
-					<label class="control-label" for="pr_content">상품 설명</label>
-						<input class="form-control" type="text" name="pr_content" placeholder="상품 설명" maxlength="16">
-				</div>
-				
-				<div class="form-group has-feedback">
-				<label class="control-label" for="userPhone">주소</label><br>
-					<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-					<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
-				</div>
-			</div>
-		</div>
-			
-			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
-		<div style=" border-top: 2px solid #ced4da;"></div>
-		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
-			  			
-	
-					
-		<!-- 상세 상품 [ROOM] 사진 -->
-		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
-			<div>
-				<!-- 메인 사진 -->
-				<div style="width: 550px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-					<img src="https://via.placeholder.com/550x300.jpg" alt="550 * 300 size image">
-				</div>
-				<!-- 작은 사진 -->
-				<div style="display: flex;">
-					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
-					</div>
-					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
-					</div>
-					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-right: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
-					</div>
-				</div>
-			</div>
-			
-			<input name="ro_select_s_or_t" value="ST" style="display: none;" id="ro_se">
-			
-			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px; margin-top: 18px;">
-				<!-- Room 이름 -->
-				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
-					<input type="text" placeholder="방 이름을 입력해주세요." name="ro_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
-				</div>
-				<!-- Room 개 수 / 최대 최소 인원 박스 -->
-				<div style="display: flex;">
-					<!-- Room 갯 수 -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 33%; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; margin-right: 5px;">
-						<input type="text" placeholder="방 개수"  onkeyup="SimultaneousInput(this.value)" name="ro_num" value="" style="outline: none; border: none; width: 100%; font-weight: bold; text-align: center;" 
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-					</div>
-					<!-- 최대/최소 인원 -->
-					<div style="border: none; width: 66%; margin-top: 10px; margin-left: 5px; display: flex;">
-						<input type="text" placeholder="최소 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_min_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-right: 5px; text-align: center;" 
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-						<input type="text" placeholder="최대 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_max_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-left: 5px; text-align: center;" 
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-					</div>
-				</div>
-				<!-- 대실 전체 박스 -->
-				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
-					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
-						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">대실</p>
-						<input value="" name="ro_t_price" id="t_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
-						<input type='button' value='사용안함'  onclick='btnActive()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse">
-						<input type='button' value='사용함'  onclick='btnActive()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use">
-					</div>
-					<!-- 대실 입실/퇴실 박스 -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="t_time_box">
-					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
-						<input value="" name="ro_t_in_time" id="t_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time1">
-						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
-						<input value="" name="ro_t_out_time" id="t_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time2">
-					</div>
-				</div>	
-				<!-- 숙박 전체 박스 -->
-				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
-					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
-						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">숙박</p>
-						<input value="" name="ro_s_price" id="s_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
-						<input type='button' value='사용안함'  onclick='btnActive2()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse2">
-						<input type='button' value='사용함'  onclick='btnActive2()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use2">
-					</div>
-					<!-- 숙박 입실/퇴실 박스 -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="s_time_box">
-					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
-						<input value="" name="ro_s_in_time" id="s_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time3">
-						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
-						<input value="" name="ro_s_out_time" id="s_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time4">
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
-	
-			<div class="form-group has-feedback">
-				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
-				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
-			</div>
-	</div>
+
+<!-- ===================================== 시작 지점 [Start] ===================================== -->
+<div style="margin-left: 15%; margin-right: 15%; margin-top: 100px">
+  <p
+    style="
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      position: relative;
+    "
+  >
+    상품 리스트
+  </p>
+  <table class="table table-hover">
+    <thead style="text-align: center">
+      <tr>
+        <th>상품 종류</th>
+        <th>상품 명</th>
+        <th>상품 설명</th>
+        <th>주소</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="text-align:right">
+  <button class="btn btn-primary">제출</button>
+  </div>
+</div>
+<p style="margin-bottom: 150px"></p>
+<!-- ======================================= 끝 지점 [End] ======================================= -->
+
 </form>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
@@ -463,6 +373,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</div>
 </form>
+
+
 	<!-- ================ End Login Modal ================= -->
     
 
