@@ -243,12 +243,12 @@
 				 <select id="lstFavorites">
 				 <option>게시판을 선택해주세요</option>
 					<c:forEach items="${boCate}" var="b">
-					    <option>${b.bo_ca_name}</option>
+					    <option>${b.ca_name}</option>
 					</c:forEach>
 				</select>
 			</div>
 			
-				<input type="text" id="txtFavorite" name="bo_ca_pid" style="display: none;"/>
+				<input type="text" id="txtFavorite" name="ca_pid" style="display: none;"/>
  
 			<div class="form-group" style="margin-top: 60px">
 				<label for="bo_title">제목</label>

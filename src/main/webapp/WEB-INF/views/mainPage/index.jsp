@@ -130,9 +130,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>

@@ -5,8 +5,9 @@
 <mapper namespace="com.kh.sw.dao.BoardDAO">
 	
 	<!-- 게시판 리스트 -->
-	<select id="BoardList" resultType="com.kh.sw.vo.BoardVO">
+	<select id="BoardList" resultType="com.kh.sw.vo.BoardVO" parameterType="string">
 		select bo_pid, bo_writer, bo_created, bo_content, bo_title, bo_modified, fi_pid, bo_ca_pid from board
+		where bo_ca_pid = #{ca_pid}
   	</select>
   
   	<!-- 게시판 글쓰기 -->
@@ -45,8 +46,9 @@
 	 </insert>
 <!-- =========================================================================================== -->	 
 	 <!-- 게시판 카테고리 리스트 -->
-	<select id="BoCateList" resultType="com.kh.sw.vo.BoardVO">
-		select bo_ca_pid, bo_ca_name from boardcategory
+	<select id="BoCateList" resultType="com.kh.sw.vo.BoardVO" parameterType="string">
+		select ca_pid, ca_name from category
+		where ca_pid = #{ca_pid}
   	</select>
 </mapper>
 

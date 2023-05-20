@@ -11,7 +11,7 @@ import com.kh.sw.vo.BoardVO;
 public interface BoardService {
 
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃
-	public List<BoardVO> boardLoad(BoardVO board);
+	public List<BoardVO> boardLoad(String ca_pid);
 
 	//寃뚯떆�뙋 湲��벐湲�
 	public int boardInsert(BoardVO board);
@@ -29,5 +29,5 @@ public interface BoardService {
 	public int fileInsert(MultipartFile[] file) throws Exception;
 	
 	//寃뚯떆�뙋 移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
-	public List<BoardVO> boardCategoryList(BoardVO board);
+	public List<BoardVO> boardCategoryList(String ca_pid);
 }

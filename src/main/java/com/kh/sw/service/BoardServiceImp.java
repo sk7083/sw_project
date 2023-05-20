@@ -13,13 +13,15 @@ import com.kh.sw.vo.BoardVO;
  
 @Service 
 public class BoardServiceImp implements BoardService{ 
+	@Autowired
 	BoardDAO boardDao; 
 	//FileUtils fileUtils;
  
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 
 	@Override 
-	public List<BoardVO> boardLoad(BoardVO board){ 
-		return boardDao.BoardList(); 
+	public List<BoardVO> boardLoad(String ca_pid){ 
+		
+		return boardDao.BoardList(ca_pid); 
 	} 
 	 
 	//寃뚯떆�뙋 湲��벐湲� 
@@ -36,7 +38,7 @@ public class BoardServiceImp implements BoardService{
 	//寃뚯떆�뙋 �닔�젙 
 	@Override 
 	public int boardUpdate(BoardVO board){ 
-		if(board == null || boardDao.BoardList().size() == 0) { 
+		if(board == null) { 
 			return 0; 
 		} 
 		return boardDao.BoardUpdate(board); 
@@ -69,12 +71,14 @@ public class BoardServiceImp implements BoardService{
 		}
 		boardDao.insertFile(file);
 		return 1;
+	}
+
+	@Override
+	public List<BoardVO> boardCategoryList(String ca_pid) {
+		
+		return boardDao.BoCateList(ca_pid);
 	} 
 	
-	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 
-	@Override 
-	public List<BoardVO> boardCategoryList(BoardVO board){ 
-		return boardDao.BoCateList(); 
-	} 
+
  
 } 

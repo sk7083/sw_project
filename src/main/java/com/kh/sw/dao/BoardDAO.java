@@ -11,7 +11,7 @@ import com.kh.sw.vo.BoardVO;
 public interface BoardDAO {
 	
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃
-	public List<BoardVO> BoardList();
+	public List<BoardVO> BoardList(String ca_pid);
 	
 	//寃뚯떆�뙋 湲��벐湲�
 	public int BoardInsert(BoardVO board);
@@ -29,6 +29,6 @@ public interface BoardDAO {
 	public void insertFile(MultipartFile[] file);
 	
 	//寃뚯떆�뙋 移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
-	public List<BoardVO> BoCateList();
+	public List<BoardVO> BoCateList(String ca_pid);
 
 }
