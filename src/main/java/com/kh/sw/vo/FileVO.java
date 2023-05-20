@@ -3,23 +3,23 @@ package com.kh.sw.vo;
 
 public class FileVO {
 	
-	private int fi_pid;
-	private int bo_pid;
+	private String fi_pid;
+	private String bo_pid;
 	private String fi_ori_name;
 	private String fi_name;
 	private int fi_size;
 	private String fi_crea_id;
 	
-	public int getFi_pid() {
+	public String getFi_pid() {
 		return fi_pid;
 	}
-	public void setFi_pid(int fi_pid) {
+	public void setFi_pid(String fi_pid) {
 		this.fi_pid = fi_pid;
 	}
-	public int getBo_pid() {
+	public String getBo_pid() {
 		return bo_pid;
 	}
-	public void setBo_pid(int bo_pid) {
+	public void setBo_pid(String bo_pid) {
 		this.bo_pid = bo_pid;
 	}
 	public String getFi_ori_name() {

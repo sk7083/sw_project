@@ -2,7 +2,7 @@ package com.kh.sw.vo;
 
 public class ProductVO {
 	//�긽�뭹 踰덊샇
-	private int pr_pid;
+	private String pr_pid;
 	//�긽�뭹 移댄뀒怨좊━ 踰덊샇(紐⑦뀛, �샇�뀛, 寃뚰븯 �벑)
 	private String pr_ca_pid;
 	//�긽�뭹 �씠由�
@@ -20,11 +20,11 @@ public class ProductVO {
 	//=========== 移댄뀒怨좊━ VO =========
 	private String ca_pid;
 
-	public int getPr_pid() {
+	public String getPr_pid() {
 		return pr_pid;
 	}
 
-	public void setPr_pid(int pr_pid) {
+	public void setPr_pid(String pr_pid) {
 		this.pr_pid = pr_pid;
 	}
 

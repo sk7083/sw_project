@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
  
 public class BoardVO { 
 	 
-	private int bo_pid; 
+	private String bo_pid; 
 	private String bo_writer; 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") 
 	private String bo_created; 
@@ -36,10 +36,10 @@ public class BoardVO {
 	public void setBo_ca_name(String bo_ca_name) {
 		this.bo_ca_name = bo_ca_name;
 	}
-	public int getBo_pid() { 
+	public String getBo_pid() { 
 		return bo_pid; 
 	} 
-	public void setBo_pid(int bo_pid) { 
+	public void setBo_pid(String bo_pid) { 
 		this.bo_pid = bo_pid; 
 	} 
 	public String getBo_writer() { 
