@@ -148,9 +148,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
@@ -166,7 +166,7 @@
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
@@ -240,13 +240,39 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
-<div style=" margin-left: 20%; margin-right: 20%; margin-top: 100px;"> 
-	<a href='<c:url value="/"></c:url>' id="boardList1-Btn"
-			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; float: right; margin-top: -50px">메인화면</a>
+<div style=" margin-left: 20%; margin-right: 20%; margin-top: 100px;">
+	<div style="text-align: right; margin-bottom: 20px">
+		<a href="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none;">수정</a>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+			<a href="<c:url value="/boardList?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none;">목록</a>           
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+			<a href="<c:url value="/boardList2?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none;">목록</a>           
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+			<a href="<c:url value="/boardList3?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none;">목록</a>           
+		</c:if>
+	</div>
 	<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px">
-		<a href="<c:url value="/boardList1"></c:url>" style="font-size: 16px; text-decoration: none">공지사항 ></a>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+			<a href="<c:url value="/boardList?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">공지사항 ></a>
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+			<a href="<c:url value="/boardList2?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">문의사항 ></a>
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+			<a href="<c:url value="/boardList3?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">이벤트 ></a>
+		</c:if>
 		<div style="display: flex;">
-			<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[${Detail.bo_ca_pid}] </p><div style="font-size: 20px"> ${Detail.bo_title}</div>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+			<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[공지사항] </p><div style="font-size: 20px"> ${Detail.bo_title}</div>
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+			<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[문의사항] </p><div style="font-size: 20px"> ${Detail.bo_title}</div>
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+			<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[이벤트] </p><div style="font-size: 20px"> ${Detail.bo_title}</div>
+		</c:if>
 		</div>			
 		<div style="font-size: 16px;">${Detail.bo_writer}</div>
 		<div style="font-size: 14px; color: #979797; border-bottom: 1px solid #ced4da; padding-bottom: 10px;">${Detail.bo_created}</div>

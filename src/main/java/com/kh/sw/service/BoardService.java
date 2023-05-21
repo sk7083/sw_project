@@ -6,10 +6,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.sw.vo.BoardVO;
+import com.kh.sw.vo.CategoryVO;
 
 
 public interface BoardService {
 
+	
+	public List<BoardVO> AllList(BoardVO board);
+	
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃
 	public List<BoardVO> boardLoad(String ca_pid);
 
@@ -30,4 +34,6 @@ public interface BoardService {
 	
 	//寃뚯떆�뙋 移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
 	public List<BoardVO> boardCategoryList(String ca_pid);
+	
+	public List<CategoryVO> CategoryList();
 }

@@ -130,9 +130,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC0003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
@@ -148,7 +148,7 @@
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
@@ -207,7 +207,7 @@
 		            <a class="button home-banner-btn" href="<c:url value="/myPage#tel123"></c:url>" style="width: 180px;">내 정보</a>
 	           	</c:if>
            	</div>
-            <div> <c:url value=""></c:url>
+            <div>
           	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
             </div>
           </div>

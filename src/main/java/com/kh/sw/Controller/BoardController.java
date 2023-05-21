@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.sw.service.BoardService;
 import com.kh.sw.service.MemberService;
 import com.kh.sw.vo.BoardVO;
+import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.MemberVO;
 
 
@@ -33,69 +34,77 @@ public class BoardController {
 	BoardService boardService;
 	MemberService memberService;
 	
-	//寃뚯떆�뙋 議고쉶 (怨듭��궗�빆)
+	//공지사항 리스트
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
 	public ModelAndView boardList1(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		//카테고리 전체 리스트
+		List<BoardVO> boardlist = boardService.AllList(board);
 		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
 		String asd = request.getParameter("ca_pid");
 		//寃뚯떆�뙋 �쟾泥� 遺덈윭�삤湲�
 		List<BoardVO> list = boardService.boardLoad(asd);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		System.out.println("boardList 값 : "+boardlist);
 		
+		mv.addObject("boardlist", boardlist);
 		mv.addObject("user", user);
 		mv.addObject("list", list);
 		mv.setViewName("board/boardList");	
 		
 		return mv;
 	}
-//	
-//	//寃뚯떆�뙋 議고쉶 (臾몄쓽�궗�빆)
-//	@RequestMapping(value = "/boardList2", method = RequestMethod.GET)
-//	public ModelAndView boardList2(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
-//		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
-//		List<BoardVO> boCate = boardService.boardCategoryList(board);
-//		//寃뚯떆�뙋 �쟾泥� 遺덈윭�삤湲�
-//		List<BoardVO> list = boardService.boardLoad(board);
-//		for(BoardVO bor : list) {
-//		}
-//		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-//		
-//		mv.addObject("boCate", boCate);
-//		mv.addObject("user", user);
-//		mv.addObject("list", list);
-//		mv.setViewName("board/boardList2");
-//		return mv;
-//	}
-//	
-//	//寃뚯떆�뙋 議고쉶 (�씠踰ㅽ듃)
-//	@RequestMapping(value = "/boardList3", method = RequestMethod.GET)
-//	public ModelAndView boardList3(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
-//		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
-//		List<BoardVO> boCate = boardService.boardCategoryList(board);
-//		//寃뚯떆�뙋 �쟾泥� 遺덈윭�삤湲�
-//		List<BoardVO> list = boardService.boardLoad(board);
-//		for(BoardVO bor : list) {
-//		}
-//		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-//		
-//		mv.addObject("boCate", boCate);
-//		mv.addObject("user", user);
-//		mv.addObject("list", list);
-//		mv.setViewName("board/boardList3");
-//		return mv;
-//	}
+	
+	//문의사항 리스트
+	@RequestMapping(value = "/boardList2", method = RequestMethod.GET)
+	public ModelAndView boardList2(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		List<BoardVO> boardlist = boardService.AllList(board);
+		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
+		String asd = request.getParameter("ca_pid");
+		//寃뚯떆�뙋 �쟾泥� 遺덈윭�삤湲�
+		List<BoardVO> list = boardService.boardLoad(asd);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		System.out.println("boardList 값 : "+boardlist);
+		mv.addObject("boardlist", boardlist);
+		mv.addObject("user", user);
+		mv.addObject("list", list);
+		mv.setViewName("board/boardList2");	
+		
+		return mv;
+	}
+	
+	//이벤트 리스트
+	@RequestMapping(value = "/boardList3", method = RequestMethod.GET)
+	public ModelAndView boardList3(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		List<BoardVO> boardlist = boardService.AllList(board);
+		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
+		String asd = request.getParameter("ca_pid");
+		//寃뚯떆�뙋 �쟾泥� 遺덈윭�삤湲�
+		List<BoardVO> list = boardService.boardLoad(asd);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		System.out.println("boardList 값 : "+boardlist);
+		mv.addObject("boardlist", boardlist);
+		mv.addObject("user", user);
+		mv.addObject("list", list);
+		mv.setViewName("board/boardList3");	
+		
+		return mv;
+	}
+
 	
 	//寃뚯떆�뙋 湲��벐湲�(GET)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
 	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
 		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
 		String asd = request.getParameter("ca_pid");
-		System.out.println(asd);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-			
-			mv.addObject("user", user);
-			mv.setViewName("board/boardInsert");
-			return mv;
+		List<CategoryVO> cateList = boardService.CategoryList();
+		
+		mv.addObject("cateList", cateList);
+		System.out.println("cateList값 : "+ cateList);
+		mv.addObject("asd", asd);
+		mv.addObject("user", user);
+		mv.setViewName("board/boardInsert");
+		return mv;
 	}
 	
 	//寃뚯떆�뙋 湲��벐湲�(POST)
@@ -139,19 +148,17 @@ public class BoardController {
 	
 
 	
-//	//寃뚯떆�뙋 �긽�꽭 �럹�씠吏�
-//	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
-//	public ModelAndView boardDetail(ModelAndView mv, HttpSession session, BoardVO board, @RequestParam("bo_pid") int bo_pid) throws Exception{
-//		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
-//		List<BoardVO> boCate = boardService.boardCategoryList(board);
-//		BoardVO Detail = boardService.boardDetail(bo_pid);
-//		mv.addObject("Detail", Detail);
-//		mv.addObject("boCate", boCate);
-//		System.out.println("boCate 媛� �븣�젮以� : "+boCate);
-//		System.out.println("boardDetail 媛� : "+Detail);
-//		mv.setViewName("board/boardDetail");
-//		return mv;
-//	}
+	//상세 게시판
+	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
+	public ModelAndView boardDetail(ModelAndView mv, HttpSession session, BoardVO board, @RequestParam("bo_pid") int bo_pid) throws Exception{
+		//寃뚯떆�뙋 移댄뀒怨좊━ 遺덈윭�삤湲�
+		BoardVO Detail = boardService.boardDetail(bo_pid);
+		mv.addObject("Detail", Detail);
+
+		System.out.println("boardDetail 값 : "+Detail);
+		mv.setViewName("board/boardDetail");
+		return mv;
+	}
 	
 	//寃뚯떆�뙋 �닔�젙
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.GET)
@@ -193,6 +200,30 @@ public class BoardController {
 			System.out.println("寃뚯떆�뙋 �궘�젣 �떎�뙣");
 			mv.setViewName("redirect:/boardList");
 		}
+		return mv;
+	}
+	
+	//공지사항
+	@RequestMapping(value = "/Notice", method = RequestMethod.GET)
+	public ModelAndView Notice(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("board/Notice");
+		return mv;
+	}
+	
+	//문의사항
+	@RequestMapping(value = "/Questions", method = RequestMethod.GET)
+	public ModelAndView Questions(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("board/Questions");
+		return mv;
+	}
+	
+	//이벤트
+	@RequestMapping(value = "/Event", method = RequestMethod.GET)
+	public ModelAndView Event(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("board/Event");
 		return mv;
 	}
 }

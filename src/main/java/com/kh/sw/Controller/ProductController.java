@@ -29,11 +29,12 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 public class ProductController {
 	@Autowired
 	ProductService productService;
+	@Autowired
 	RoomService roomService;
 
 	//================================================================================================
 
-	//�긽�뭹 �깮�꽦(異붽�) (GET)
+	//상품 관리 페이지
 	@RequestMapping(value = "/productManagerInfoList", method = RequestMethod.GET)
 	public ModelAndView productManagerInfoList(ModelAndView mv, HttpServletRequest request, MemberVO member, ProductVO product) throws Exception{
 		List<ProductVO> list = productService.productInfoList();
@@ -44,6 +45,7 @@ public class ProductController {
 		return mv;
 	}
 	
+	//상품 등록 페이지
 	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
 	public ModelAndView productInsert(ModelAndView mv, HttpServletRequest request) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
@@ -63,6 +65,7 @@ public class ProductController {
 		return mv;
 	}
 	
+	//상품 등록 Process
 	@RequestMapping(value = "/productInsertProcess", method = RequestMethod.POST)
 	public String productInsertProcess(ModelAndView mv,HttpServletRequest request) {
 		ProductVO product = new ProductVO();
@@ -78,17 +81,19 @@ public class ProductController {
 		return "redirect:/productManagerInfoList";
 	}
 	
+	//상품 정보 페이지
 	@RequestMapping(value = "/productInfo", method = RequestMethod.GET)
 	public ModelAndView productInfo(ModelAndView mv,HttpServletRequest request) {
 		String pid = request.getParameter("pid");
 		ProductVO product = productService.productDetail(Integer.parseInt(pid));
+		List<RoomVO> roomList = roomService.roomList(pid);
 		mv.addObject("product",product);
+		mv.addObject("roomList",roomList);
 		mv.setViewName("product/productInfo");
 		return mv;
 	}
 	
 	
-	//�긽�뭹 �쁽�솴
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
 	public ModelAndView prductList(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
 		List<ProductVO> list = productService.productList(product);
@@ -112,6 +117,7 @@ public class ProductController {
 		return mv;
 	}
 	
+	//상품 정보 수정.
 	@RequestMapping(value = "/productUpdate", method = RequestMethod.POST)
 	public String productUpdate(ModelAndView mv, HttpSession session,HttpServletRequest request) throws Exception{
 		int pid = Integer.parseInt(request.getParameter("pr_pid"));
@@ -128,7 +134,7 @@ public class ProductController {
 		return "redirect:/productInfo?pid="+pid+"#tel123";
 	}
 
-	
+	//방 등록 페이지
 	@RequestMapping(value = "/roomInsert", method = RequestMethod.GET)
 	public ModelAndView roomInsert(ModelAndView mv, HttpServletRequest request) throws Exception{
 		int pid = Integer.parseInt(request.getParameter("pid"));
@@ -137,27 +143,46 @@ public class ProductController {
 		return mv;
 	}
 	
+	//방 등록 Process.
 	@RequestMapping(value = "/roomInsertProcess", method = RequestMethod.POST)
 	public String roomInsertProcess(ModelAndView mv, HttpServletRequest request) throws Exception{
 		int pr_pid = Integer.parseInt(request.getParameter("pr_pid"));
+		String ro_name = request.getParameter("ro_name");
+		int ro_count = Integer.parseInt(request.getParameter("ro_num"));
+		int ro_min_people = Integer.parseInt(request.getParameter("ro_min_people"));
+		int ro_max_people = Integer.parseInt(request.getParameter("ro_max_people"));
+		String select = request.getParameter("ro_select_s_or_t");
 		
 		RoomVO room = new RoomVO();
-		room.setProd_pid(pr_pid);
-		room.setRo_name(request.getParameter("ro_name"));
-		room.setRo_num(request.getParameter("ro_num"));
-		room.setRo_min_people(request.getParameter("ro_min_people"));
-		room.setRo_max_people(request.getParameter("ro_max_people"));
-		room.setRo_t_price(request.getParameter("ro_t_price"));
-		room.setRo_t_in_time(request.getParameter("ro_t_in_time"));
-		room.setRo_t_out_time(request.getParameter("ro_t_out_time"));
-		room.setRo_s_price(request.getParameter("ro_s_price"));
-		room.setRo_s_in_time(request.getParameter("ro_s_in_time"));
-		room.setRo_s_out_time(request.getParameter("ro_s_out_time"));
-		room.setRo_select_s_or_t(request.getParameter("ro_select_s_or_t"));
+		room.setPr_pid(pr_pid);
+		room.setRo_name(ro_name);
+		room.setRo_count(ro_count);
+		room.setRo_description("설명");
+		room.setRo_min_people(ro_min_people);
+		room.setRo_max_people(ro_max_people);
+		room.setRo_select(select);
 		
-		int result = roomService.RoomInsert(room);
+		if(select.equals("S")) {
+			room.setRo_s_price(request.getParameter("ro_s_price"));
+			room.setRo_s_in_time(request.getParameter("ro_s_in_time"));
+			room.setRo_s_out_time(request.getParameter("ro_s_in_time"));
+			
+		}else if(select.equals("T")) {
+			room.setRo_t_price(request.getParameter("ro_t_price"));
+			room.setRo_t_in_time(request.getParameter("ro_t_in_time"));
+			room.setRo_t_out_time(request.getParameter("ro_t_out_time"));
+		}else {
+			room.setRo_s_price(request.getParameter("ro_s_price"));
+			room.setRo_s_in_time(request.getParameter("ro_s_in_time"));
+			room.setRo_s_out_time(request.getParameter("ro_s_in_time"));
+			
+			room.setRo_t_price(request.getParameter("ro_t_price"));
+			room.setRo_t_in_time(request.getParameter("ro_t_in_time"));
+			room.setRo_t_out_time(request.getParameter("ro_t_out_time"));
+		}
 		
-	
+		
+		roomService.roomInsert(room);
 		return "redirect:/productInfo?pid="+pr_pid+"#tel123";
 	}
 
@@ -173,36 +198,6 @@ public class ProductController {
 			System.out.println("�긽�뭹 �궘�젣 �떎�뙣");
 			mv.setViewName("redirect:/productList");
 		}
-		return mv;
-	}
-	// ==================================== [�긽�뭹 �럹�씠吏�] ====================================
-	//�긽�뭹 �쁽�솴 [紐⑦뀛]
-	@RequestMapping(value = "/motel", method = RequestMethod.GET)
-	public ModelAndView prductListMotel(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		mv.addObject("user", user);
-		mv.setViewName("product/motel");
-		return mv;
-	}
-	
-	
-	//�긽�뭹 �쁽�솴 [紐⑦뀛]
-	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView prducel(ModelAndView mv, RoomVO room) throws Exception{
-
-		mv.setViewName("member/test");
-		return mv;
-	}
-	@RequestMapping(value = "/test", method = RequestMethod.POST)
-	public ModelAndView prducelasd(ModelAndView mv, RoomVO room) throws Exception{
-		int ros = roomService.RoomInsert(room);
-		System.out.println("ros �솗�씤 : "+ros);
-	    if(ros != 0) {
-	    	System.out.println("�꽦怨�!");
-	    }
-
-		mv.setViewName("member/test");
 		return mv;
 	}
 }

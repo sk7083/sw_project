@@ -27,6 +27,4 @@ public interface ProductService {
 	public List<CategoryVO> CategoryList();
 	
 	public List<ProductVO> productInfoList();
-	
-	public int insertRooom(RoomVO room);
 }

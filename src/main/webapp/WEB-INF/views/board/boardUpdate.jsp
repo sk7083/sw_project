@@ -149,9 +149,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
@@ -167,7 +167,7 @@
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
@@ -243,13 +243,37 @@
 	<div style=" margin-left: 20%; margin-right: 20%; margin-top: 100px;"> 
 		<div style="float: right; margin-top: -50px;">
 			<button type="submit" class="btn btn-light" id="signup">등록</button>
-			<a href='<c:url value="/boardList1#tel123"></c:url>' id="boardList1-Btn"
-				            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-left: 10px">목록</a>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+			<a href="<c:url value="/boardList?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none; padding-bottom: 9px;">취소</a>           
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+			<a href="<c:url value="/boardList2?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none; padding-bottom: 9px;">취소</a>           
+		</c:if>
+		<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+			<a href="<c:url value="/boardList3?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top: -50px; border: none; padding-bottom: 9px;">취소</a>           
+		</c:if>
 		</div>			
 		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px">
-			<a href="<c:url value="/boardList1"></c:url>" style="font-size: 16px; text-decoration: none">${Detail.bo_ca_pid} ></a>
+			<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+				<a href="<c:url value="/boardList?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">공지사항 ></a>
+			</c:if>
+			<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+				<a href="<c:url value="/boardList2?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">문의사항 ></a>
+			</c:if>
+			<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+				<a href="<c:url value="/boardList3?bo_ca_pid=${Detail.bo_ca_pid}#tel123"></c:url>" style="font-size: 16px; text-decoration: none">이벤트 ></a>
+			</c:if>
 			<div style="display: flex; align-items: baseline;">
-				<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px; margin-right: 20px;">[${Detail.bo_ca_pid}] </p><input style="font-size: 20px; border: 1px solid #ced4da; border-radius: 6px; width: 85%;" name="bo_title" value="${Detail.bo_title}"> 
+				<c:if test="${Detail.bo_ca_pid eq 'BC00001' }">
+					<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[공지사항] </p><input style="font-size: 20px; border: 1px solid #ced4da; border-radius: 6px; width: 90%; margin-left: auto;" name="bo_title" value="${Detail.bo_title}">
+				</c:if>
+				<c:if test="${Detail.bo_ca_pid eq 'BC00002' }">
+					<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[문의사항] </p><input style="font-size: 20px; border: 1px solid #ced4da; border-radius: 6px; width: 90%; margin-left: auto;" name="bo_title" value="${Detail.bo_title}">
+				</c:if>
+				<c:if test="${Detail.bo_ca_pid eq 'BC00003' }">
+					<p style="font-weight: bold; margin-right: 6px; font-size: 18px; margin-top: 2px">[이벤트] </p> </p><input style="font-size: 20px; border: 1px solid #ced4da; border-radius: 6px; width: 90%; margin-left: auto;" name="bo_title" value="${Detail.bo_title}">
+				</c:if>
+
 			</div>			
 			<div style="font-size: 16px;">${Detail.bo_writer}</div>
 			<div style="font-size: 14px; color: #979797; border-bottom: 1px solid #ced4da; padding-bottom: 10px;">${Detail.bo_created}</div>
@@ -260,10 +284,6 @@
 			<div class="form-group">
 			    <div class="form-group" id="file-list">
 			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가 [미구현]</a>
-			        <div class="file-group">
-			            <input type="file" name="fi_pid"><a href='#this' name='file-delete' id="file-delete-Btn"
-			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none">삭제</a>
-			        </div>
 			    </div>
 			</div>
 			<!-- ================================ 아래부터 댓글란 [업데이트에선 사용 안함] ================================ -->

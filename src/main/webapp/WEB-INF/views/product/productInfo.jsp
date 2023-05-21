@@ -176,7 +176,9 @@
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link"
 										href="<c:url value="/memberManager"></c:url>">Management</a></li>
-									<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product Management</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product
+											Management</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
 								</ul></li>
@@ -246,94 +248,106 @@
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 		<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
-		<!-- ===================================== 시작 지점 [Start] ===================================== -->
-		<div style="margin-left: 15%; margin-right: 15%; margin-top: 100px">
-			<form action="<c:url value="/productUpdate"></c:url>" method="post"
-				enctype="multipart/form-data">
-				<input type="hidden" name="pr_pid" value="${product.pr_pid }" />
-				<div
-					style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
-					<p
-						style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품
-						정보</p>
+	<!-- ===================================== 시작 지점 [Start] ===================================== -->
+	<div style="margin-left: 15%; margin-right: 15%; margin-top: 100px">
+		<form action="<c:url value="/productUpdate"></c:url>" method="post"
+			enctype="multipart/form-data">
+			<input type="hidden" name="pr_pid" value="${product.pr_pid }" />
+			<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
+				<p
+					style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품
+					정보</p>
 
-					<div class="container">
-						<div class="form-group">
-							<label class="control-label" for="ca_name">상품 종류</label> <input
-								class="form-control" type="text" name="ca_name"
-								placeholder="상품 종류" maxlength="16" value=${product.ca_name }
-								readonly="readonly">
-						</div>
-						<input type="hidden" id="txtFavorite" name="pr_ca_pid"
-							value="${product.pr_ca_pid }" />
+				<div class="container">
+					<div class="form-group">
+						<label class="control-label" for="ca_name">상품 종류</label> <input
+							class="form-control" type="text" name="ca_name"
+							placeholder="상품 종류" maxlength="16" value=${product.ca_name }
+							readonly="readonly">
+					</div>
+					<input type="hidden" id="txtFavorite" name="pr_ca_pid"
+						value="${product.pr_ca_pid }" />
 
-						<div class="form-group">
-							<label for="pr_name">상품명</label> <input type="text"
-								class="form-control" id="pr_name" name="pr_name"
-								placeholder="상품명" required maxlength=20
-								value=${product.pr_name }>
-						</div>
+					<div class="form-group">
+						<label for="pr_name">상품명</label> <input type="text"
+							class="form-control" id="pr_name" name="pr_name"
+							placeholder="상품명" required maxlength=20 value=${product.pr_name }>
+					</div>
 
-						<div class="form-group">
-							<label class="control-label" for="pr_content">상품 설명</label> <input
-								class="form-control" type="text" name="pr_content"
-								placeholder="상품 설명" maxlength="16" value=${product.pr_content }>
-						</div>
+					<div class="form-group">
+						<label class="control-label" for="pr_content">상품 설명</label> <input
+							class="form-control" type="text" name="pr_content"
+							placeholder="상품 설명" maxlength="16" value=${product.pr_content }>
+					</div>
 
-						<div class="form-group has-feedback">
-							<label class="control-label" for="userPhone">주소</label><br>
-							<input type="text" id="sample6_postcode" placeholder="우편번호"
-								name="pr_address1" value=${product.pr_address1 }
-								style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-							<input type="button" onclick="sample6_execDaumPostcode()"
-								value="우편번호 찾기"
-								style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-							<input type="text" id="sample6_address" placeholder="주소"
-								name="pr_address2" value=${product.pr_address2 }
-								style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-							<input type="text" id="sample6_detailAddress" placeholder="상세주소"
-								name="pr_address3" value=${product.pr_address3 }
-								style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목"
-								style="display: none">
-						</div>
-						<div class="form-group has-feedback" style="text-align: right;">
-							<button type="submit" class="btn btn-primary"
-								style="margin-top: 20px" id="signup">수정</button>
-						</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userPhone">주소</label><br> <input
+							type="text" id="sample6_postcode" placeholder="우편번호"
+							name="pr_address1" value=${product.pr_address1 }
+							style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+						<input type="button" onclick="sample6_execDaumPostcode()"
+							value="우편번호 찾기"
+							style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
+						<input type="text" id="sample6_address" placeholder="주소"
+							name="pr_address2" value=${product.pr_address2 }
+							style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+						<input type="text" id="sample6_detailAddress" placeholder="상세주소"
+							name="pr_address3" value=${product.pr_address3 }
+							style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+						<input type="text" id="sample6_extraAddress" placeholder="참고항목"
+							style="display: none">
+					</div>
+					<div class="form-group has-feedback" style="text-align: right;">
+						<button type="submit" class="btn btn-primary"
+							style="margin-top: 20px" id="signup">수정</button>
 					</div>
 				</div>
-			</form>
-
-			<table class="table table-hover">
-				<thead style="text-align: center">
-					<tr>
-						<th rowspan="2">방 이름</th>
-						<th rowspan="2">방 개수</th>
-						<th rowspan="2">최소 인원</th>
-						<th rowspan="2">최대 인원</th>
-						<th colspan="2">대실</th>
-						<th colspan="2">숙박</th>
-					</tr>
-					<tr>
-						<th>가격</th>
-						<th>이용시간</th>
-						<th>가격</th>
-						<th>이용시간</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr></tr>
-				</tbody>
-			</table>
-			<div style="text-align: right">
-				<button class="btn btn-primary" onclick="location.href='/sw/roomInsert?pid=${product.pr_pid}'">방 등록</button>
-				<button class="btn btn-light"
-					onclick="location.href='/sw/productManagerInfoList'">돌아가기</button>
 			</div>
+		</form>
+
+		<table class="table table-hover">
+			<thead style="text-align: center">
+				<tr>
+					<th rowspan="2">방 이름</th>
+					<th rowspan="2">방 개수</th>
+					<th rowspan="2">최소 인원</th>
+					<th rowspan="2">최대 인원</th>
+					<th colspan="2">대실</th>
+					<th colspan="2">숙박</th>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<th>이용시간</th>
+					<th>가격</th>
+					<th>이용시간</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${roomList}" var="p">
+					<tr style="text-align: center">
+						<!-- 첫번째 줄 시작 -->
+						<td>${p.ro_name}</td>
+						<td>${p.ro_count}</td>
+						<td>${p.ro_min_people}</td>
+						<td>${p.ro_max_people}</td>
+						<td>${p.ro_t_price}</td>
+						<td>${p.ro_t_in_time} ~ ${p.ro_t_out_time }</td>
+						<td>${p.ro_s_price}</td>
+						<td>${p.ro_s_in_time} ~ ${p.ro_s_out_time }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<div style="text-align: right">
+			<button class="btn btn-primary"
+				onclick="location.href='/sw/roomInsert?pid=${product.pr_pid}'">방
+				등록</button>
+			<button class="btn btn-light"
+				onclick="location.href='/sw/productManagerInfoList'">돌아가기</button>
 		</div>
-		<p style="margin-bottom: 150px"></p>
-		<!-- ======================================= 끝 지점 [End] ======================================= -->
+	</div>
+	<p style="margin-bottom: 150px"></p>
+	<!-- ======================================= 끝 지점 [End] ======================================= -->
 
 	</form>
 	<!-- ======================================= 끝 지점 [End] ======================================= -->

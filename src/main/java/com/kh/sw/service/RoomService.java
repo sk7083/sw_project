@@ -6,20 +6,9 @@ import com.kh.sw.vo.RoomVO;
 
 
 public interface RoomService {
-
-	//�긽�뭹 �쟾泥� 由ъ뒪�듃
-	public List<RoomVO> RoomList(RoomVO room);
-
-	//�긽�뭹 �깮�꽦(異붽�)
-	public int RoomInsert(RoomVO room);
+	//방 등록
+	public int roomInsert(RoomVO room);
 	
-	//�긽�뭹 �닔�젙
-	public int RoomUpdate(RoomVO room);
-	
-	//�긽�뭹 �긽�꽭 �럹�씠吏�
-	public RoomVO RoomDetail(int ro_pid);
-	
-	//�긽�뭹 �궘�젣
-	public int RoomDelete(int ro_pid);
-	
+	//상품의 방 리스트
+	public List<RoomVO> roomList(String pr_pid);
 }

@@ -73,10 +73,5 @@ public class ProductServiceImp implements ProductService{
 		return productDao.productInfoList();
 	}
 
-	@Override
-	public int insertRooom(RoomVO room) {
-		// TODO Auto-generated method stub
-		return productDao.insertRoom(room);
-	}
 	
 }

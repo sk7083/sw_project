@@ -1,7 +1,6 @@
 package com.kh.sw.service; 
  
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.sw.dao.BoardDAO;
 import com.kh.sw.vo.BoardVO;
+import com.kh.sw.vo.CategoryVO;
 
  
 @Service 
@@ -17,6 +17,13 @@ public class BoardServiceImp implements BoardService{
 	BoardDAO boardDao; 
 	//FileUtils fileUtils;
  
+	
+	@Override 
+	public List<BoardVO> AllList(BoardVO board){ 
+		
+		return boardDao.AllList(); 
+	}
+	
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 
 	@Override 
 	public List<BoardVO> boardLoad(String ca_pid){ 
@@ -79,6 +86,10 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.BoCateList(ca_pid);
 	} 
 	
-
+	@Override
+	public List<CategoryVO> CategoryList() {
+		
+		return boardDao.CategoryList();
+	}
  
 } 

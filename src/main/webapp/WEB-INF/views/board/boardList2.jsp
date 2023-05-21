@@ -147,9 +147,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
@@ -165,7 +165,7 @@
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
@@ -213,7 +213,7 @@
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">Notice</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Questions</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
@@ -242,7 +242,13 @@
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
 <div style=" margin-left: 15%; margin-right: 15%; margin-top: 100px;">
-<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">문의사항</p>
+<div style="display: flex;">
+	<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">문의사항</p>
+	<c:if test="${user.me_auth == 2}">
+		<a href="<c:url value="/Questions?ca_pid=BC0002"></c:url>" style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; margin-left: auto; text-decoration: none; float: right; margin-bottom: 35px;">게시글 작성</a>
+	</c:if>
+</div>
+
   <table class="table table-hover">
     <thead style="text-align: center;">
       <tr>
@@ -250,15 +256,14 @@
         <th>제목</th>
         <th>작성자</th>
         <th>작성일</th>
-        <th>조회</th>
         <th><c:if test="${user.me_auth == 2}"></c:if></th>
         <th><c:if test="${user.me_auth == 2}"></c:if></th>
       </tr>
     </thead>
     
     <!-- 공지사항일 경우에만 표기 -->
-	<c:forEach items ="${list}" var="b">
-		<c:if test="${b.bo_ca_pid eq '문의사항'}">
+	<c:forEach items ="${boardlist}" var="b">
+		<c:if test="${b.bo_ca_pid eq 'BC00002'}">
 			<tbody style="text-align: center;">
 				<tr>
 					<td>${b.bo_pid}</td>
@@ -266,7 +271,6 @@
 						<c:out value="${b.bo_title}"/></a></td>
 					<td>${b.bo_writer}</td>
 					<td>${b.bo_created}</td>
-					<td>[미구현]</td>
 					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/boardUpdate?bo_pid=${b.bo_pid}#tel123"></c:url>" class="btn-update" style="text-decoration:none; color: black; font-weight: bold;">
 						<c:out value="수정" /></a></c:if></td>
 					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/boardDelete/${b.bo_pid}"></c:url>" class="btn-delete" style="text-decoration:none; color: red; font-weight: bold;">
