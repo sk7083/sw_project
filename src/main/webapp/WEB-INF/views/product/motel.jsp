@@ -130,7 +130,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
+<!-- ===================================== 상단 메뉴 [Start] ===================================== -->
+
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
               <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
@@ -138,17 +139,42 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Motel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Guest House</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Notice</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Contact</a></li>
+<!-- ===================================== 상단 메뉴 [End] ===================================== -->
+
+<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+			
+			<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
+				</ul>
+				</li>
+			</c:if>
+<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
             </ul>
           </div>
+
+
 
          <!-- 우측 상단 로그인 / 회원가입 버튼 -->
           <ul class="social-icons ml-auto" style="padding-top: 14px;">
@@ -197,7 +223,7 @@
 	<span id="tel123"></span>
 	<!-- 이동할 위치 지정 -->
     <!-- =================================== 시작 지점 [start] =================================== -->
-    <div class="section-intro__
+<div class="section-intro__
     tyle" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 		<h2 style="margin-top: 10px; margin-bottom: 50px">SEAPALACE</h2>
@@ -205,70 +231,53 @@
 	<div style="margin-left: 20%; margin-right: 20%">
 	<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">모텔</p>
 		<!-- 지역 선택 드롭다운 --> 
-			<div style="display: flex; margin-bottom: 20px;">
-				<div class="dropdown">
-				    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-				     지역선택
-				    </button>
-				    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="#">서울</a>
-				      <a class="dropdown-item" href="#">경기</a>
-				      <a class="dropdown-item" href="#">인천</a>
-				    </div>
-				</div>
-				<a href='<c:url value="/"></c:url>' id="motel-Btn"
-		            style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; margin-left: 10px; text-decoration: none;">메인화면</a>
+		<div style="display: flex; margin-bottom: 20px;">
+			<div class="dropdown">
+			    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+			     지역선택
+			    </button>
+			    <div class="dropdown-menu">
+			      <a class="dropdown-item" href="#">서울</a>
+			      <a class="dropdown-item" href="#">경기</a>
+			      <a class="dropdown-item" href="#">인천</a>
+			    </div>
 			</div>
+			<a href='<c:url value="/"></c:url>' id="motel-Btn"
+	            style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; margin-left: 10px; text-decoration: none;">메인화면</a>
+		</div>
+		
 		<!-- ============================ [사진 첨부 코드] [Start] ============================ -->
-		<c:forEach items ="${proList}" var="p">
-			<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
-				<!-- 사진 담을 박스 -->
-				<div style="width: 400px; height: 450px; border: 1px solid #ced4da; border-radius: 10px; margin-right: 30px">
-					<!-- 메인 사진 -->
-					<div style="width: 360px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-						<img src="https://via.placeholder.com/360x300.jpg" alt="360 * 300 size image">
-					</div>
-					<!-- 작은 사진 -->
-					<div style="display: flex;">
-						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
-						</div>
-						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
-						</div>
-						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-right: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
+	<c:forEach items ="${proList}" var="p">
+			<c:if test="${p.pr_ca_pid eq 'CA0001'}">
+				<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
+					<!-- 사진 담을 박스 -->
+					<div style="width: 400px; border: 1px solid #ced4da; border-radius: 10px; margin-right: 30px">
+						<!-- 메인 사진 -->
+						<div style="width: 350px; height: 200px; border-radius: 10px; outline: 1px solid #cbcbcb; border-radius: 5px; margin: 20px">
+							<img src="https://via.placeholder.com/350x200.jpg" alt="350 * 200 size image">
 						</div>
 					</div>
+				<!-- ============================ [상품 관련 코드] [Start] ============================ -->
+					<div style="width: 100%; border: 1px solid #ced4da; border-radius: 10px;">		
+						<div style="margin-left: 20px; margin-right: 20px; margin-top: 20px; width: 100%; font-size: 22px; font-weight: bold;">
+							<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style=" color: black;"><c:out value="${p.pr_name}"/></a>
+						</div>
+						<div style="margin-left: 20px; margin-right: 20px;">
+							<input value="${p.pr_content}" style="outline: none; border: none; background-color: white; width: 100%; font-size: 18px;" disabled="disabled">
+						</div>
+						<div style="margin-left: 20px; margin-right: 20px; margin-top: 20px">
+							<input value="${p.pr_address2} ${p.pr_address3} (${p.pr_address1})" style="outline: none; border: none; background-color: white; width: 100%; font-size: 18px;" disabled="disabled">
+						</div>
+						<div style="margin-top: 50px">
+
+								<input value="대실 값" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
+								<input value="숙박 값" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
+
+						</div>
+					</div>
+				<!-- ============================ [상품 관련 코드] [End] ============================ -->
 				</div>
-			<!-- ============================ [사진 첨부 코드] [End] ============================ -->
-			
-			<!-- ============================ [상품 관련 코드] [Start] ============================ -->
-				<div style="width: 100%; height: 450px; border: 1px solid #ced4da; border-radius: 10px;">
-					<!-- 상품 제목 부분 -->
-					<div style="margin-left: 40px; margin-right: 40px; margin-top: 20px">
-						<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style="text-decoration: none; color: black; font-weight: bold;"><c:out value="${p.pr_name}" /></a>						
-					</div>
-					<!-- 상품 내용 및 가격 박스 -->
-					<div style="height: 340px; border: 1px solid #ced4da; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px">
-						<!-- 상품 내용 -->
-						<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
-							<input value="${p.pr_content}" name="pr_content" style="width: 100%; height: 100%; text-align: left; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
-						</div>
-						<!-- 상품 가격 -->
-						<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
-							<input value="" placeholder="상품 가격 (ro_price) : ro_pid 1기준 가격" name="pr_content" disabled="disabled" style="width: 100%; height: 100%; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;">
-						</div>
-						<!-- 상품 주소 -->
-						<div style="height: 50px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px; display: flex;">
-							<input value="${p.pr_address2} (${p.pr_address1})" name="pr_address2" style="width: 100%; height: 100%; border: none; background-color: white; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
-							<input value="${p.pr_address1}" name="pr_address1" style="display: none;" disabled="disabled">
-							<input value="${p.pr_address3}" name="pr_address3" style="display: none;" disabled="disabled">
-						</div>
-					</div>
-				</div>
-			<!-- ============================ [상품 관련 코드] [End] ============================ -->
-			</div>
+			</c:if>
 		</c:forEach>
 	</div>
 	
@@ -422,26 +431,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	//========================= Login 모달창 [Start] =========================
-/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
-	const modal = document.querySelector('.modal');
-	const loginBtn = document.querySelector('#loginBtn');
+//========================= Login 모달창 [Start] =========================
+const modal = document.querySelector('.modal');
+const loginBtn2 = document.querySelector('#loginBtn2');
+
+
+loginBtn2.addEventListener('click', () => {
+modal.style.display = 'block';
+});
 	
-	loginBtn.addEventListener('click', () => {
-	modal.style.display = 'block';
-	});
-		
-	// 모달 on
-	body.style.overflow = 'hidden';
-	// 모달 off
-	body.style.overflow = 'auto';
-	//모달 닫는 이벤트
-	function modalClose() {
-		$('#mod').modal('hide'); 
-        $('#mod').hide();
-	}
-*/
-	//========================= Login 모달창 [End] ===========================
+// 모달 on
+body.style.overflow = 'hidden';
+// 모달 off
+body.style.overflow = 'auto';
+//모달 닫는 이벤트
+function modalClose() {
+	$('#mod').modal('hide'); 
+    $('#mod').hide();
+}
+//========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
 	function sample6_execDaumPostcode() {

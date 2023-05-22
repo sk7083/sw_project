@@ -18,5 +18,8 @@ public class CategoryVO {
 		this.ca_pid = ca_pid;
 	}
 	
-
+	@Override
+	public String toString() {
+		return "CategoryVO [ca_pid=" + ca_pid + ", ca_name=" + ca_name + "]";
+	}
 }

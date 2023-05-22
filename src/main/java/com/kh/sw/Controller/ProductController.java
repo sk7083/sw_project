@@ -47,7 +47,10 @@ public class ProductController {
 	
 	//상품 등록 페이지
 	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
-	public ModelAndView productInsert(ModelAndView mv, HttpServletRequest request) {
+	public ModelAndView productInsert(ModelAndView mv, HttpServletRequest request, CategoryVO category) {
+		//23-05-22 수정
+		List<CategoryVO> categoryList = productService.CategoryList2(category);
+		
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		List<CategoryVO> lsCategory = productService.CategoryList();
 		List<CategoryVO> getCategory = new ArrayList<CategoryVO>();
@@ -61,6 +64,7 @@ public class ProductController {
 		
 		mv.addObject("user", user);
 		mv.addObject("category",getCategory);
+		mv.addObject("categoryList", categoryList);
 		mv.setViewName("product/productInsert");
 		return mv;
 	}
@@ -198,6 +202,20 @@ public class ProductController {
 			System.out.println("�긽�뭹 �궘�젣 �떎�뙣");
 			mv.setViewName("redirect:/productList");
 		}
+		return mv;
+	}
+	
+	//상품 motel
+	@RequestMapping(value = "/motel", method = RequestMethod.GET)
+	public ModelAndView motel(ModelAndView mv, ProductVO product, RoomVO room) throws Exception{
+		//상품 전체 리스트
+		List<ProductVO> productList = productService.ProductAllList(product);
+		//방 전체 리스트
+		List<RoomVO> roomList = roomService.roomALlList(room);
+		
+		mv.addObject("productList", productList);
+		mv.addObject("roomList", roomList);
+		mv.setViewName("product/motel");
 		return mv;
 	}
 }

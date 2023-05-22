@@ -83,7 +83,6 @@
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>

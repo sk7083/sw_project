@@ -11,4 +11,8 @@ public interface RoomService {
 	
 	//상품의 방 리스트
 	public List<RoomVO> roomList(String pr_pid);
+	
+	//방 전체 리스트
+	public List<RoomVO> roomALlList(RoomVO room);
+	
 }

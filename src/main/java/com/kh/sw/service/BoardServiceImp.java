@@ -21,7 +21,7 @@ public class BoardServiceImp implements BoardService{
 	@Override 
 	public List<BoardVO> AllList(BoardVO board){ 
 		
-		return boardDao.AllList(); 
+		return boardDao.AllList(board); 
 	}
 	
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 

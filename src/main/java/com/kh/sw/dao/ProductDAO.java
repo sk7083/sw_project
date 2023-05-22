@@ -9,7 +9,10 @@ import com.kh.sw.vo.RoomVO;
 
 public interface ProductDAO {
 	
-	//�긽�뭹 �쟾泥� 由ъ뒪�듃
+	
+	//상품 전체 리스트
+	public List<ProductVO> ProductAllList(ProductVO product);
+	
 	public List<ProductVO> ProductList();
 	
 	//�긽�뭹 �깮�꽦(異붽�)
@@ -24,8 +27,10 @@ public interface ProductDAO {
 	//�긽�뭹 �궘�젣
 	public int ProductDelete(int pr_pid);
 	
-	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
+	//카테고리 리스트
 	public List<CategoryVO> CategoryList();
+	//카테고리 리스트 (수정)
+	public List<CategoryVO> CategoryList2(CategoryVO category);
 	
 	public String getCateName(String id);
 	

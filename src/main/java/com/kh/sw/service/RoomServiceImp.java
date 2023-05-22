@@ -27,4 +27,10 @@ public class RoomServiceImp implements RoomService{
 		return roomDao.roomList(pr_pid);
 	}
 	
+	//방 전체 리스트
+	@Override
+	public List<RoomVO> roomALlList(RoomVO room) {
+		return roomDao.roomALlList(room);
+	}
+	
 }

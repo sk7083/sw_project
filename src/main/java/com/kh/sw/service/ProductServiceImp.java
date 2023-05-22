@@ -9,12 +9,24 @@ import org.springframework.stereotype.Service;
 import com.kh.sw.dao.ProductDAO;
 import com.kh.sw.vo.CategoryVO;
 import com.kh.sw.vo.ProductVO;
-import com.kh.sw.vo.RoomVO;
 
 @Service
 public class ProductServiceImp implements ProductService{
 	@Autowired
 	ProductDAO productDao;
+	
+	//상품 전체 리스트
+	@Override
+	public List<ProductVO> ProductAllList(ProductVO product){
+		List<ProductVO> list = new ArrayList<ProductVO>();
+		try {
+			list =  productDao.ProductAllList(product);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	//�긽�뭹 �쟾泥� 由ъ뒪�듃
 	@Override
@@ -61,10 +73,16 @@ public class ProductServiceImp implements ProductService{
 		return productDao.ProductDelete(pr_pid);
 	}
 	
-	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
+	//카테고리 리스트
 	@Override
 	public List<CategoryVO> CategoryList(){
 		return productDao.CategoryList();
+	}
+	
+	//카테고리 리스트 (수정)
+	@Override
+	public List<CategoryVO> CategoryList2(CategoryVO category){
+		return productDao.CategoryList2(category);
 	}
 
 	@Override

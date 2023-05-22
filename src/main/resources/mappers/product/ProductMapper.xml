@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.sw.dao.ProductDAO">
 
+	<!-- 게시판 전체 리스트 -->
+	<select id="ProductAllList" resultType="com.kh.sw.vo.ProductVO">
+		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3, bo_ca_pid from product
+  	</select>
+
 	<!-- 게시판 리스트 -->
 	<select id="ProductList" resultType="com.kh.sw.vo.ProductVO">
 		select P.pr_pid, P.pr_ca_pid, C.ca_name,P.pr_name, P.pr_content, P.pr_address1, P.pr_address2, P.pr_address3 from product P,category C
@@ -52,6 +57,11 @@
   	
 	<!-- 카테고리 리스트 -->
 	<select id="CategoryList" resultType="com.kh.sw.vo.CategoryVO">
+		select ca_pid,ca_name from category
+  	</select>
+  	
+	<!-- 카테고리 리스트 (수정판) -->
+	<select id="CategoryList2" resultType="com.kh.sw.vo.CategoryVO">
 		select ca_pid,ca_name from category
   	</select>
   	

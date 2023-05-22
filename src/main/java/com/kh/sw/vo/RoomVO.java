@@ -112,5 +112,12 @@ public class RoomVO {
 		this.ro_max_people = ro_max_people;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "RoomVO [ro_pid=" + ro_pid + ", pr_pid=" + pr_pid + ", ro_name=" + ro_name + ", ro_count=" + ro_count
+				+ ", ro_description=" + ro_description + ", ro_min_people=" + ro_min_people + ", ro_max_people="
+				+ ro_max_people + ", ro_select=" + ro_select + ", ro_s_price=" + ro_s_price + ", ro_s_in_time="
+				+ ro_s_in_time + ", ro_s_out_time=" + ro_s_out_time + ", ro_t_price=" + ro_t_price + ", ro_t_in_time="
+				+ ro_t_in_time + ", ro_t_out_time=" + ro_t_out_time + "]";
+	}
 } 

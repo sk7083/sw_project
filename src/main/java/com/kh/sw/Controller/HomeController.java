@@ -81,14 +81,8 @@ public class HomeController {
 	public ModelAndView registerMemberPost(ModelAndView mv, MemberVO member) throws Exception{
 		boolean memberSignup = memberService.registerMember(member);
 		if(memberSignup) {
-			System.out.println("============================================");
-			System.out.println("ȸ������ ����");
-			System.out.println("============================================");
 			mv.setViewName("redirect:/");
 		} else {
-			System.out.println("============================================");
-			System.out.println("ȸ������ ����");
-			System.out.println("============================================");
 			mv.setViewName("redirect:/register");
 		}
 		return mv;

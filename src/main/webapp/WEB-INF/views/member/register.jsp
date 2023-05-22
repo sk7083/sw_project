@@ -134,8 +134,8 @@
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Guest House</a></li>
                 </ul>
               </li>
               <li class="nav-item submenu dropdown">
@@ -147,9 +147,9 @@
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Contact</a></li>
 <!-- ===================================== 상단 메뉴 [End] ===================================== -->
 
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
@@ -161,7 +161,6 @@
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>
@@ -433,26 +432,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	//========================= Login 모달창 [Start] =========================
-/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
-	const modal = document.querySelector('.modal');
-	const loginBtn = document.querySelector('#loginBtn');
+//========================= Login 모달창 [Start] =========================
+const modal = document.querySelector('.modal');
+const loginBtn2 = document.querySelector('#loginBtn2');
+
+
+loginBtn2.addEventListener('click', () => {
+modal.style.display = 'block';
+});
 	
-	loginBtn.addEventListener('click', () => {
-	modal.style.display = 'block';
-	});
-		
-	// 모달 on
-	body.style.overflow = 'hidden';
-	// 모달 off
-	body.style.overflow = 'auto';
-	//모달 닫는 이벤트
-	function modalClose() {
-		$('#mod').modal('hide'); 
-        $('#mod').hide();
-	}
-*/
-	//========================= Login 모달창 [End] ===========================
+// 모달 on
+body.style.overflow = 'hidden';
+// 모달 off
+body.style.overflow = 'auto';
+//모달 닫는 이벤트
+function modalClose() {
+	$('#mod').modal('hide'); 
+    $('#mod').hide();
+}
+//========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
 	function sample6_execDaumPostcode() {

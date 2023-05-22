@@ -140,8 +140,8 @@
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Guest House</a></li>
                 </ul>
               </li>
               <li class="nav-item submenu dropdown">
@@ -153,9 +153,9 @@
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Contact</a></li>
 <!-- ===================================== 상단 메뉴 [End] ===================================== -->
 
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
@@ -167,7 +167,6 @@
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>
@@ -444,9 +443,25 @@ $textarea.oninput = (event) => {
   $target.style.height = 0;
   $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + 'px';
 };
-//========================= 게시판 이전글 / 다음글 클릭하여 화면 넘기기 [Start] =========================
+//========================= Login 모달창 [Start] =========================
+const modal = document.querySelector('.modal');
+const loginBtn2 = document.querySelector('#loginBtn2');
 
-//========================== 게시판 이전글 / 다음글 클릭하여 화면 넘기기 [End] ==========================
+
+loginBtn2.addEventListener('click', () => {
+modal.style.display = 'block';
+});
+	
+// 모달 on
+body.style.overflow = 'hidden';
+// 모달 off
+body.style.overflow = 'auto';
+//모달 닫는 이벤트
+function modalClose() {
+	$('#mod').modal('hide'); 
+    $('#mod').hide();
+}
+//========================= Login 모달창 [End] ===========================
 	
 //========================= 게시판 글쓰기 써머노트 [Start] =========================
 $('.summernote').summernote({

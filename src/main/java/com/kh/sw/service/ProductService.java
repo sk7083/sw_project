@@ -8,6 +8,9 @@ import com.kh.sw.vo.RoomVO;
 
 public interface ProductService {
 
+	//상품 전체 리스트
+	public List<ProductVO> ProductAllList(ProductVO product);
+	
 	//�긽�뭹 �쟾泥� 由ъ뒪�듃
 	public List<ProductVO> productList(ProductVO product);
 
@@ -23,8 +26,11 @@ public interface ProductService {
 	//�긽�뭹 �궘�젣
 	public int productDelete(int pr_pid);
 	
-	//移댄뀒怨좊━ �쟾泥� 由ъ뒪�듃
+	//카테고리 리스트
 	public List<CategoryVO> CategoryList();
+	
+	//카테고리 리스트 (수정)
+	public List<CategoryVO> CategoryList2(CategoryVO category);
 	
 	public List<ProductVO> productInfoList();
 }

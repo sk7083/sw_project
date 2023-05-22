@@ -130,60 +130,60 @@
 	</div>
 
 
-	<div class="main_menu">
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<!-- <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a> -->
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse offset"
-					id="navbarSupportedContent">
-					<ul class="nav navbar-nav menu_nav">
-						<li class="nav-item active"><a class="nav-link"
-							href="<c:url value="/"></c:url>">Home</a></li>
-						<li class="nav-item submenu dropdown"><a href="#"
-							class="nav-link dropdown-toggle" data-toggle="dropdown"
-							role="button" aria-haspopup="true" aria-expanded="false">Product</a>
-							<ul class="dropdown-menu">
-								<li class="nav-item"><a class="nav-link"
-									href="<c:url value="/blog"></c:url>">Motel</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value="/about"></c:url>">About</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value="/properties"></c:url>">Properties</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value="/contact"></c:url>">Contact</a></li>
-						<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <!-- <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+<!-- ===================================== 상단 메뉴 [Start] ===================================== -->
 
-						<c:if test="${user.me_auth == 2}">
-							<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="<c:url value="/memberManager"></c:url>">Management</a></li>
-									<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
-								</ul></li>
-						</c:if>
-						<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
-					</ul>
-				</div>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav">
+              <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Product</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Guest House</a></li>
+                </ul>
+              </li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Notice</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList?ca_pid=BC00001"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2?ca_pid=BC00002"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Contact</a></li>
+<!-- ===================================== 상단 메뉴 [End] ===================================== -->
+
+<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+			
+			<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
+				</ul>
+				</li>
+			</c:if>
+<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
+            </ul>
+          </div>
 
 				<!-- 우측 상단 로그인 / 회원가입 버튼 -->
 				<ul class="social-icons ml-auto" style="padding-top: 14px;">
@@ -251,16 +251,13 @@
 	<form action="<c:url value="/productInsertProcess"></c:url>" method="post"
 		enctype="multipart/form-data">
 		<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
-			<p
-				style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품
-				등록</p>
-
+			<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품등록</p>
 			<div class="container">
 				<div class="form-group">
 					<label for="pr_name">상품 선택</label> 
 					<select id="lstFavorites">
 						<option>상품을 선택해주세요.</option>
-						<c:forEach items="${category}" var="v">
+						<c:forEach items="${categoryList}" var="v">
 							<option value="${v.ca_pid }">${v.ca_name}</option>
 						</c:forEach>
 					</select>

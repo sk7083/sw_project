@@ -139,8 +139,8 @@
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="javascript:alert('모텔에서 진행하세요.');">Guest House</a></li>
                 </ul>
               </li>
               <li class="nav-item submenu dropdown">
@@ -152,9 +152,9 @@
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3?ca_pid=BC00003"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="javascript:alert('준비중입니다.');">Contact</a></li>
 <!-- ===================================== 상단 메뉴 [End] ===================================== -->
 
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
@@ -166,7 +166,6 @@
 			  	<ul class="dropdown-menu">
 				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/productManagerInfoList#tel123"></c:url>">Product</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>
@@ -364,9 +363,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<button class="close-btn" onclick="modalClose()" style="float: right; display: flex; background-color: white; border: 0px solid; font-weight: bold; font-size: 26px; position: absolute; right: 6%; top: 2%">X</button><br>
 			<div class="container">
 			  <h2 style="text-align: center; margin-left: 10px; margin-bottom: 30px">SunMall</h2>
-			  <!-- 
-			  <form action="/action_page.php" class="was-validated">
-			   -->
 			    <div class="form-group">
 			      <label for="uname">UserID:</label>
 			      <input type="text" class="form-control" id="uname" placeholder="UserID" name="me_id" required>
@@ -382,20 +378,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 			    <!-- 모달창에서 또다른 모달창을 띄워서 회원가입 진행 -->
 			    <a href="<c:url value="/register"></c:url>" style="text-decoration: none; color: black;">회원가입</a>
-			    <!-- 체크박스 임시 주석
-			    <div class="form-group form-check">
-			      <label class="form-check-label">
-			        <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
-			        <div class="valid-feedback"></div>
-			        <div class="invalid-feedback">Check this checkbox to continue.</div>
-			      </label>
-			    </div>
-			    -->
 			    <button type="submit" id="Modal-login-btn" class="btn btn-outline-light text-dark">로그인</button>
-			    
-			  <!-- 
-			  </form>
-			   -->
+
 			</div>
 		</div>
 	</div>
@@ -423,6 +407,26 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+//========================= Login 모달창 [Start] =========================
+const modal = document.querySelector('.modal');
+const loginBtn2 = document.querySelector('#loginBtn2');
+
+
+loginBtn2.addEventListener('click', () => {
+modal.style.display = 'block';
+});
+	
+// 모달 on
+body.style.overflow = 'hidden';
+// 모달 off
+body.style.overflow = 'auto';
+//모달 닫는 이벤트
+function modalClose() {
+	$('#mod').modal('hide'); 
+    $('#mod').hide();
+}
+//========================= Login 모달창 [End] ===========================
+
 //========================= 게시판 글쓰기 써머노트 [Start] =========================
 $('.summernote').summernote({
 	  height: 300,
@@ -456,27 +460,6 @@ function BoardWriting(){
         });
 //========================= 게시판 카테고리 선택 드롭박스 [End] =========================
 
-	
-	//========================= Login 모달창 [Start] =========================
-/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
-	const modal = document.querySelector('.modal');
-	const loginBtn = document.querySelector('#loginBtn');
-	
-	loginBtn.addEventListener('click', () => {
-	modal.style.display = 'block';
-	});
-		
-	// 모달 on
-	body.style.overflow = 'hidden';
-	// 모달 off
-	body.style.overflow = 'auto';
-	//모달 닫는 이벤트
-	function modalClose() {
-		$('#mod').modal('hide'); 
-        $('#mod').hide();
-	}
-*/
-	//========================= Login 모달창 [End] ===========================
 //파일 추가/삭제 버튼
 
 $(document).ready(function() {

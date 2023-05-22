@@ -11,7 +11,7 @@ import com.kh.sw.vo.CategoryVO;
 
 public interface BoardDAO {
 	
-	public List<BoardVO> AllList();
+	public List<BoardVO> AllList(BoardVO board);
 	
 	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃
 	public List<BoardVO> BoardList(String ca_pid);

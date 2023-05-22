@@ -12,4 +12,7 @@ public interface RoomDAO {
 	public int roomInsert(RoomVO room);
 	
 	public List<RoomVO>roomList(String pr_pid);
+	
+	//룸 전체 리스트
+	public List<RoomVO> roomALlList(RoomVO room);
 }
