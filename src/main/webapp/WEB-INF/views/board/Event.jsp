@@ -257,7 +257,7 @@
 			<!-- ==================================================== 파일 첨부 부분 ==================================================== -->
 			<div class="form-group">
 			    <div class="form-group" id="file-list">
-			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가 [미구현]</a>
+			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가</a>
 			    </div>
 			</div>
 	
@@ -414,25 +414,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
-//========================= Login 모달창 [Start] =========================
-const modal = document.querySelector('.modal');
-const loginBtn2 = document.querySelector('#loginBtn2');
-
-
-loginBtn2.addEventListener('click', () => {
-modal.style.display = 'block';
-});
-	
-// 모달 on
-body.style.overflow = 'hidden';
-// 모달 off
-body.style.overflow = 'auto';
-//모달 닫는 이벤트
-function modalClose() {
-	$('#mod').modal('hide'); 
-    $('#mod').hide();
-}
-//========================= Login 모달창 [End] ===========================
 //========================= 게시판 글쓰기 써머노트 [Start] =========================
 $('.summernote').summernote({
 	  height: 300,

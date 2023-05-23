@@ -25,8 +25,6 @@ public class RoomVO {
 	private String ro_t_in_time;
 	@DateTimeFormat(pattern = "HH:mm")
 	private String ro_t_out_time;
-
-
 	public int getRo_pid() {
 		return ro_pid;
 	}
@@ -44,6 +42,30 @@ public class RoomVO {
 	}
 	public void setRo_name(String ro_name) {
 		this.ro_name = ro_name;
+	}
+	public int getRo_count() {
+		return ro_count;
+	}
+	public void setRo_count(int ro_count) {
+		this.ro_count = ro_count;
+	}
+	public String getRo_description() {
+		return ro_description;
+	}
+	public void setRo_description(String ro_description) {
+		this.ro_description = ro_description;
+	}
+	public int getRo_min_people() {
+		return ro_min_people;
+	}
+	public void setRo_min_people(int ro_min_people) {
+		this.ro_min_people = ro_min_people;
+	}
+	public int getRo_max_people() {
+		return ro_max_people;
+	}
+	public void setRo_max_people(int ro_max_people) {
+		this.ro_max_people = ro_max_people;
 	}
 	public String getRo_select() {
 		return ro_select;
@@ -87,31 +109,6 @@ public class RoomVO {
 	public void setRo_t_out_time(String ro_t_out_time) {
 		this.ro_t_out_time = ro_t_out_time;
 	}
-	public int getRo_count() {
-		return ro_count;
-	}
-	public void setRo_count(int ro_count) {
-		this.ro_count = ro_count;
-	}
-	public String getRo_description() {
-		return ro_description;
-	}
-	public void setRo_description(String ro_description) {
-		this.ro_description = ro_description;
-	}
-	public int getRo_min_people() {
-		return ro_min_people;
-	}
-	public void setRo_min_people(int ro_min_people) {
-		this.ro_min_people = ro_min_people;
-	}
-	public int getRo_max_people() {
-		return ro_max_people;
-	}
-	public void setRo_max_people(int ro_max_people) {
-		this.ro_max_people = ro_max_people;
-	}
-	
 	@Override
 	public String toString() {
 		return "RoomVO [ro_pid=" + ro_pid + ", pr_pid=" + pr_pid + ", ro_name=" + ro_name + ", ro_count=" + ro_count
@@ -120,4 +117,7 @@ public class RoomVO {
 				+ ro_s_in_time + ", ro_s_out_time=" + ro_s_out_time + ", ro_t_price=" + ro_t_price + ", ro_t_in_time="
 				+ ro_t_in_time + ", ro_t_out_time=" + ro_t_out_time + "]";
 	}
+
+
+
 } 

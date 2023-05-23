@@ -94,12 +94,6 @@ public class ProductVO {
 		this.re_pid = re_pid;
 	}
 	
-	@Override
-	public String toString() {
-		return "ProductVO [pr_pid=" + pr_pid + ", pr_ca_pid=" + pr_ca_pid + ", pr_name=" + pr_name + ", pr_content="
-				+ pr_content + ", pr_address1=" + pr_address1 + ", pr_address2=" + pr_address2 + ", pr_address3="
-				+ pr_address3 + ", re_pid=" + re_pid + ", ca_pid=" + ca_pid + "]";
-	}
 
 	public String getCa_name() {
 		return ca_name;
@@ -115,6 +109,14 @@ public class ProductVO {
 
 	public void setDisplayAdress(String displayAdress) {
 		this.displayAdress = displayAdress;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductVO [productDAO=" + productDAO + ", pr_pid=" + pr_pid + ", pr_ca_pid=" + pr_ca_pid + ", pr_name="
+				+ pr_name + ", ca_name=" + ca_name + ", pr_content=" + pr_content + ", pr_address1=" + pr_address1
+				+ ", pr_address2=" + pr_address2 + ", pr_address3=" + pr_address3 + ", displayAdress=" + displayAdress
+				+ ", re_pid=" + re_pid + ", ca_pid=" + ca_pid + "]";
 	}
 	
 

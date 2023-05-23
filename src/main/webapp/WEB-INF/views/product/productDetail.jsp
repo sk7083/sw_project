@@ -252,12 +252,8 @@
 			
 			<!-- ============================ [상품 관련 코드] [Start] ============================ -->
 			<div style="width: 50%; height: 450px; border: 1px solid #ced4da; border-radius: 10px;">
-				<!-- 상품 제목 부분 -->
-				<div style="margin-left: 40px; margin-right: 40px; margin-top: 20px">
-					<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style="text-decoration: none; color: black; font-weight: bold;"><c:out value="${p.pr_name}" /></a>						
-				</div>
 				<!-- 상품 내용 및 가격 박스 -->
-				<div style="height: 340px; border: 1px solid #ced4da; border-radius: 10px; margin-left: 20px; margin-right: 20px;">
+				<div style="height: 340px; border: 1px solid #ced4da; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px">
 					<!-- 상품 제목 -->
 					<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
 						<input value="${Detail.pr_name}" style="width: 100%; height: 100%; text-align: left; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">

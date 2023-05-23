@@ -310,7 +310,7 @@
 		</div>
 		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
 	
-			<div class="form-group has-feedback">
+			<div class="form-group has-feedback" style="text-align: right;">
 				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
 				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
 			</div>
@@ -481,6 +481,8 @@ function btnActive()  {
 		 Use.style.display = 'block';
 		 //input 비활성
 		 stop.disabled = true;
+		 stop.style.backgroundColor = 'white';
+		 stop.style.textDecoration = 'line-through';
 		 timebox.style.display = 'none';
 		 if(type.value == 'ST'){
 			 type.value ='S';
@@ -494,6 +496,7 @@ function btnActive()  {
 	    Use.style.display = 'none';
 	  //input 활성
 	    stop.disabled = false;
+	    stop.style.textDecoration = 'none';
 	    timebox.style.display = 'flex';
 		 if(type.value == 'S'){
 			 type.value='ST';
@@ -521,6 +524,8 @@ function btnActive2()  {
 		 Use2.style.display = 'block';
 		 //input 비활성
 		 stop2.disabled = true;
+		 stop2.style.backgroundColor = 'white';
+		 stop2.style.textDecoration = 'line-through';
 		 timebox2.style.display = 'none';
 		 if(type.value == 'ST'){
 			 type.value = 'T';
@@ -535,6 +540,7 @@ function btnActive2()  {
 	    Use2.style.display = 'none';
 	  //input 활성
 	    stop2.disabled = false;
+	    stop2.style.textDecoration = 'none';
 	    timebox2.style.display = 'flex';
 		 if(type.value == 'T'){
 			 type.value ='ST';

@@ -6,7 +6,7 @@
 
 	<!-- 게시판 전체 리스트 -->
 	<select id="ProductAllList" resultType="com.kh.sw.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3, bo_ca_pid from product
+		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3 from product
   	</select>
 
 	<!-- 게시판 리스트 -->

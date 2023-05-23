@@ -246,8 +246,9 @@
 	            style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; margin-left: 10px; text-decoration: none;">메인화면</a>
 		</div>
 		
+
 		<!-- ============================ [사진 첨부 코드] [Start] ============================ -->
-	<c:forEach items ="${proList}" var="p">
+	<c:forEach items ="${productList}" var="p">
 			<c:if test="${p.pr_ca_pid eq 'CA0001'}">
 				<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
 					<!-- 사진 담을 박스 -->
@@ -260,7 +261,11 @@
 				<!-- ============================ [상품 관련 코드] [Start] ============================ -->
 					<div style="width: 100%; border: 1px solid #ced4da; border-radius: 10px;">		
 						<div style="margin-left: 20px; margin-right: 20px; margin-top: 20px; width: 100%; font-size: 22px; font-weight: bold;">
+							
+							<a href="javascript:alert('준비중입니다.');" style=" color: black;"><c:out value="${p.pr_name}"/></a>
+							<!-- 
 							<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style=" color: black;"><c:out value="${p.pr_name}"/></a>
+							 -->
 						</div>
 						<div style="margin-left: 20px; margin-right: 20px;">
 							<input value="${p.pr_content}" style="outline: none; border: none; background-color: white; width: 100%; font-size: 18px;" disabled="disabled">
@@ -269,10 +274,8 @@
 							<input value="${p.pr_address2} ${p.pr_address3} (${p.pr_address1})" style="outline: none; border: none; background-color: white; width: 100%; font-size: 18px;" disabled="disabled">
 						</div>
 						<div style="margin-top: 50px">
-
-								<input value="대실 값" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
-								<input value="숙박 값" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
-
+								<input value="대실 값 : 50,000" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
+								<input value="숙박 값 : 70,000" style="outline: none; background-color: white; width: 100%; font-size: 22px; font-weight: bold; text-align: right; border: none;" disabled="disabled">
 						</div>
 					</div>
 				<!-- ============================ [상품 관련 코드] [End] ============================ -->

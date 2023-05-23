@@ -433,23 +433,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script type="text/javascript">
 //========================= Login 모달창 [Start] =========================
-const modal = document.querySelector('.modal');
-const loginBtn2 = document.querySelector('#loginBtn2');
 
-
-loginBtn2.addEventListener('click', () => {
-modal.style.display = 'block';
-});
-	
-// 모달 on
-body.style.overflow = 'hidden';
-// 모달 off
-body.style.overflow = 'auto';
-//모달 닫는 이벤트
-function modalClose() {
-	$('#mod').modal('hide'); 
-    $('#mod').hide();
-}
 //========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
@@ -469,7 +453,6 @@ function modalClose() {
 	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
 	                addr = data.jibunAddress;
 	            }
-	
 	            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
 	            if(data.userSelectedType === 'R'){
 	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -487,11 +470,9 @@ function modalClose() {
 	                }
 	                // 조합된 참고항목을 해당 필드에 넣는다.
 	                document.getElementById("sample6_extraAddress").value = extraAddr;
-	            
 	            } else {
 	                document.getElementById("sample6_extraAddress").value = '';
 	            }
-	
 	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	            document.getElementById('sample6_postcode').value = data.zonecode;
 	            document.getElementById("sample6_address").value = addr;
@@ -607,7 +588,7 @@ function modalClose() {
       showMonthAfterYear: true,
       yearSuffix: '년'
   });
-//===================================== 전화번호 유효성 [010-0000-0000] =====================================
+//===================================== 전화번호 정규식 [010-0000-0000] =====================================
   const autoHyphen2 = (target) => {
 	  target.value = target.value
 	    .replace(/[^0-9]/g, '')

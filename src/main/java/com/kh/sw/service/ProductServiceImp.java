@@ -18,14 +18,8 @@ public class ProductServiceImp implements ProductService{
 	//상품 전체 리스트
 	@Override
 	public List<ProductVO> ProductAllList(ProductVO product){
-		List<ProductVO> list = new ArrayList<ProductVO>();
-		try {
-			list =  productDao.ProductAllList(product);
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		return list;
+
+		return productDao.ProductAllList(product);
 	}
 	
 	//�긽�뭹 �쟾泥� 由ъ뒪�듃

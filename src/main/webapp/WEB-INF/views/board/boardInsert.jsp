@@ -263,7 +263,7 @@
 			<!-- ==================================================== 파일 첨부 부분 ==================================================== -->
 			<div class="form-group">
 			    <div class="form-group" id="file-list">
-			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가 [미구현]</a>
+			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가</a>
 			        <div class="file-group">
 			            <input type="file" name="fi_pid"><a href='#this' name='file-delete' id="file-delete-Btn"
 			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none">삭제</a>

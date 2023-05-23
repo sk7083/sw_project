@@ -112,11 +112,16 @@ public class ProductController {
 		
 	//�긽�뭹 �긽�꽭 �럹�씠吏�
 	@RequestMapping(value = "/productDetail", method = RequestMethod.GET)
-	public ModelAndView productDetail(ModelAndView mv, HttpSession session,HttpServletRequest request) throws Exception{
+	public ModelAndView productDetail(ModelAndView mv, HttpSession session,HttpServletRequest request, RoomVO room) throws Exception{
+		//방 전체 리스트
+		List<RoomVO> roomList = roomService.roomALlList(room);
 		int pr_pid = Integer.parseInt(request.getParameter("pr_pid"));
 		ProductVO Detail = productService.productDetail(pr_pid);
+		
+		mv.addObject("roomList", roomList);
 		mv.addObject("Detail", Detail);
 		System.out.println("boardDetail 媛� : "+Detail);
+		
 		mv.setViewName("product/productDetail");
 		return mv;
 	}

@@ -257,9 +257,11 @@
 					<label for="pr_name">상품 선택</label> 
 					<select id="lstFavorites">
 						<option>상품을 선택해주세요.</option>
-						<c:forEach items="${categoryList}" var="v">
-							<option value="${v.ca_pid }">${v.ca_name}</option>
-						</c:forEach>
+							<c:forEach items="${categoryList}" var="v">
+								<c:if test="${v.ca_pid eq 'CA0001' || v.ca_pid eq 'CA0002' || v.ca_pid eq 'CA0003'}">
+									<option value="${v.ca_pid }">${v.ca_name}</option>
+								</c:if>
+							</c:forEach>
 					</select>
 				</div>
 				<input type="hidden" id="txtFavorite" name="pr_ca_pid"  value=""/>
